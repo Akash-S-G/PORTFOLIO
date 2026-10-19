@@ -1,0 +1,86 @@
+export type RoleFilter = 'all' | 'backend' | 'ai-edge' | 'distributed';
+
+export interface ArchitectureNode {
+  id: string;
+  label: string;
+  sublabel: string;
+  role: string;
+  details: string;
+  category: 'client' | 'gateway' | 'ai-inference' | 'storage' | 'edge-sync';
+}
+
+export interface ArchitectureConnection {
+  from: string;
+  to: string;
+  protocol: string;
+  label: string;
+}
+
+export interface ProjectTradeoff {
+  dimension: string;
+  decision: string;
+  rationale: string;
+  alternative: string;
+}
+
+export interface ProjectData {
+  id: string;
+  title: string;
+  category: string;
+  roleTag: 'flagship' | 'featured' | 'prototype';
+  tagline: string;
+  summary: string;
+  problem: string;
+  verifiedContribution: string;
+  teamContext?: string;
+  technologies: string[];
+  keyDecisions: string[];
+  outcomesAndLimitations: {
+    verified: string[];
+    limitations: string[];
+  };
+  architectureFlow: {
+    nodes: ArchitectureNode[];
+    connections: ArchitectureConnection[];
+    description: string;
+  };
+  tradeoffs?: ProjectTradeoff[];
+  githubUrl: string;
+  liveDemoUrl?: string; // Only if public verified demo exists
+}
+
+export interface ExperienceData {
+  company: string;
+  role: string;
+  location: string;
+  period: string;
+  description: string[];
+  technologies: string[];
+  systemsEngineered: string[];
+}
+
+export interface SkillCategory {
+  category: string;
+  description: string;
+  skills: {
+    name: string;
+    verifiedUse: string;
+    relatedProjects: string[]; // project IDs
+  }[];
+}
+
+export interface EducationData {
+  institution: string;
+  degree: string;
+  period: string;
+  score: string;
+  highlights: string[];
+}
+
+export interface AchievementData {
+  title: string;
+  category: string;
+  description: string;
+  proofNote: string;
+  link?: string;
+}
