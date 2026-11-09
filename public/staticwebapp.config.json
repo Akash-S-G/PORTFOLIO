@@ -3,15 +3,21 @@
     "rewrite": "/index.html",
     "exclude": [
       "/assets/*",
-      "*.{css,js,svg,jpg,png,pdf,ico,json,txt,xml,websites,webmanifest,woff,woff2,ttf,eot,map}"
+      "/404.html",
+      "/*.css",
+      "/*.js",
+      "/*.svg",
+      "/*.jpg",
+      "/*.png",
+      "/*.pdf",
+      "/*.ico",
+      "/*.json",
+      "/*.txt",
+      "/*.xml",
+      "/*.webmanifest",
+      "/*.woff",
+      "/*.woff2",
+      "/*.map"
     ]
-  },
-  "mimeTypes": {
-    ".json": "application/json"
-  },
-  "globalHeaders": {
-    "/*": {
-      "X-Content-Type-Options": "nosniff"
-    }
   }
 }
