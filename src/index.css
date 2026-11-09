@@ -14,11 +14,14 @@
   html {
     scroll-behavior: smooth;
     border-radius: 0 !important;
-    font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Manrope', 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Archivo', 'Space Grotesk', sans-serif;
+    font-family: 'Anton', 'Archivo', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.015em;
+    font-weight: 400;
   }
 
   ::selection {

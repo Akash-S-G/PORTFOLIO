@@ -23,7 +23,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-[85vh] flex flex-col justify-center pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden bg-white dark:bg-black transition-colors duration-150">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-28 pb-20 lg:pt-32 lg:pb-24 overflow-hidden bg-white dark:bg-black transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, x: -25 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="lg:col-span-7 flex flex-col space-y-6 order-2 lg:order-1"
+            className="lg:col-span-6 flex flex-col space-y-6 order-2 lg:order-1"
           >
             {/* Status Rectangle */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] w-fit text-xs font-mono text-black dark:text-white uppercase font-bold">
@@ -101,14 +101,14 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-            className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2"
-            style={{ perspective: 900 }}
+            className="lg:col-span-6 flex justify-center items-center order-1 lg:order-2"
+            style={{ perspective: 1000 }}
           >
             <motion.div
               onMouseMove={handleTilt}
               onMouseLeave={resetTilt}
               style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-              className="group relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] aspect-square rounded-none overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-[10px_10px_0px_0px_#FF4D00] hover:border-signal cursor-crosshair transition-shadow duration-300"
+              className="group relative w-full max-w-[380px] sm:max-w-[460px] lg:max-w-[560px] aspect-square rounded-none overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-[10px_10px_0px_0px_#FF4D00] hover:border-signal cursor-crosshair transition-shadow duration-300"
             >
               <img
                 src="/akash-portrait.jpg"
@@ -124,17 +124,6 @@ export const Hero: React.FC = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Subtle Bottom Scroll Cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.4 }}
-        className="mt-8 flex flex-col items-center justify-center text-center text-neutral-600 dark:text-neutral-400 text-[11px] font-mono gap-1 select-none pointer-events-none uppercase font-bold"
-      >
-        <span>SCROLL FOR FULL PROFILE &amp; CASE STUDIES</span>
-        <ArrowDown className="w-3.5 h-3.5 animate-bounce stroke-[2.5] text-signal" />
-      </motion.div>
     </section>
   );
 };
