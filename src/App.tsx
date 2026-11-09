@@ -14,7 +14,34 @@ import { ContactSection } from './components/contact/ContactSection';
 import { Footer } from './components/footer/Footer';
 import { ScrollSection } from './components/common/ScrollSection';
 
+const KNOWN_SECTIONS = ['hero', 'overview', 'projects', 'architecture', 'experience', 'skills', 'education', 'about', 'contact'];
+
+// Normalizes invalid routes to the homepage, mapping `/projects`-style paths
+// onto `#projects` anchors when the segment matches a real section.
+const normalizeRoute = () => {
+  const segments = window.location.pathname.split('/').filter(Boolean);
+  if (segments.length === 0) return;
+
+  // On GitHub Pages project sites the first segment is the repo slug (e.g. /PORTFOLIO/)
+  const isProjectPage = window.location.hostname.endsWith('.github.io');
+  const base = isProjectPage ? `/${segments[0]}/` : '/';
+  const last = segments[segments.length - 1].toLowerCase().replace(/[^a-z0-9-]/g, '');
+  const isKnownSection = KNOWN_SECTIONS.includes(last);
+
+  // Any invalid route lands back on the homepage
+  window.history.replaceState(null, '', base);
+
+  if (isKnownSection) {
+    requestAnimationFrame(() => {
+      document.getElementById(last)?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+};
+
 const PortfolioContent: React.FC = () => {
+  React.useEffect(() => {
+    normalizeRoute();
+  }, []);
   const handleSelectProjectFromSkill = (projectId: string) => {
     const el = document.getElementById(`project-${projectId}`);
     if (el) {

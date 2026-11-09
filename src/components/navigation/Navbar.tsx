@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* Right Action Icons & Theme Toggle */}
-          <div className="hidden sm:flex items-center gap-2.5">
+          <div className="hidden md:flex items-center gap-2.5">
             {/* Dark / Light Mode Switcher */}
             <ThemeToggle />
 
@@ -118,7 +118,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Toggle & Theme Toggle */}
-          <div className="flex sm:hidden items-center gap-2">
+          <div className="flex md:hidden items-center gap-2">
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -134,7 +134,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-white dark:bg-black border-b-2 border-black dark:border-white px-4 pt-3 pb-6 space-y-3 shadow-xl">
+        <div className="md:hidden bg-white dark:bg-black border-b-2 border-black dark:border-white px-4 pt-3 pb-6 space-y-3 shadow-xl">
           <div className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <a

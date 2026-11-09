@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting… | Akash Siddappa Goundi</title>
+    <style>
+      body { font-family: "IBM Plex Mono", ui-monospace, monospace; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #ffffff; color: #000000; }
+      .box { border: 2px solid #000; padding: 2rem; box-shadow: 6px 6px 0 0 #000; max-width: 90vw; text-align: left; }
+      .box a { color: #ff4d00; font-weight: 700; }
+    </style>
+    <script>
+      (function () {
+        var SECTIONS = ['hero', 'overview', 'projects', 'architecture', 'experience', 'skills', 'education', 'about', 'contact'];
+
+        // Path on GitHub Pages looks like /PORTFOLIO/<unknown-segment>
+        var segments = window.location.pathname.split('/').filter(Boolean);
+        var first = segments[0] || '';
+        var last = segments[segments.length - 1] || '';
+
+        // Base path: repo slug for project pages, root for user-site hosts
+        var isProjectPage = window.location.hostname.endsWith('.github.io') && first !== '';
+        var base = isProjectPage ? '/' + first + '/' : '/';
+
+        // Map the invalid path segment to a section anchor when it matches one
+        var clean = decodeURIComponent(last).toLowerCase().replace(/[^a-z0-9-]/g, '');
+        var target = base;
+        if (SECTIONS.indexOf(clean) !== -1) {
+          target = base + '#' + clean;
+        }
+
+        window.location.replace(target);
+
+        // No-JS fallback link
+        document.addEventListener('DOMContentLoaded', function () {
+          var link = document.getElementById('fallback-link');
+          if (link && target) link.setAttribute('href', target);
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="box">
+      <strong>404</strong><br /><br />
+      This page doesn&rsquo;t exist.<br />
+      Redirecting you to the homepage&hellip;<br /><br />
+      If you are not redirected automatically, <a id="fallback-link" href="/">click here</a>.
+    </div>
+  </body>
+</html>

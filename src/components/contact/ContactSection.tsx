@@ -72,7 +72,7 @@ export const ContactSection: React.FC = () => {
                     <Mail className="w-4 h-4" />
                     <div>
                       <div className="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 uppercase font-bold">Email</div>
-                      <a href={`mailto:${PERSONAL_INFO.email}`} className="text-xs font-mono font-bold text-black dark:text-white hover:underline">
+                      <a href={`mailto:${PERSONAL_INFO.email}`} className="text-xs font-mono font-bold text-black dark:text-white hover:underline break-all">
                         {PERSONAL_INFO.email}
                       </a>
                     </div>

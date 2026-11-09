@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4 text-xs font-mono font-bold uppercase">
+          <div className="flex flex-wrap justify-center items-center gap-4 text-xs font-mono font-bold uppercase">
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
