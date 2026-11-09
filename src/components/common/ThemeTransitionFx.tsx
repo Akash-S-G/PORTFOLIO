@@ -4,6 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 
 /**
  * Full-screen gradient sweep (orange <-> cyan) that plays on every theme switch.
+ * Timed to finish WITH the 250ms color crossfade so it reads as one motion.
  * Purely decorative: fixed, pointer-events-none, auto-dismisses.
  */
 export const ThemeTransitionFx: React.FC = () => {
@@ -19,7 +20,7 @@ export const ThemeTransitionFx: React.FC = () => {
     }
     setActive(true);
     setSweepKey((k) => k + 1);
-    const t = setTimeout(() => setActive(false), 1100);
+    const t = setTimeout(() => setActive(false), 420);
     return () => clearTimeout(t);
   }, [theme]);
 
@@ -28,19 +29,17 @@ export const ThemeTransitionFx: React.FC = () => {
       {active && (
         <motion.div
           key={sweepKey}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.15 } }}
           className="fixed inset-0 z-[90] pointer-events-none overflow-hidden"
           aria-hidden="true"
         >
           {/* Ambient radial gradient flash — direction flips with theme */}
           <motion.div
             className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.6, 0] }}
-            transition={{ duration: 0.9, ease: 'easeInOut' }}
+            initial={{ opacity: 0.65 }}
+            animate={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             style={{
               background:
                 theme === 'dark'
@@ -49,12 +48,12 @@ export const ThemeTransitionFx: React.FC = () => {
             }}
           />
 
-          {/* Diagonal orange -> cyan sweep band */}
+          {/* Diagonal orange -> cyan sweep band, same 250ms window as the color fade */}
           <motion.div
             className="absolute inset-y-0 -left-full w-full"
             initial={{ x: 0 }}
             animate={{ x: '200%' }}
-            transition={{ duration: 0.85, ease: [0.65, 0, 0.35, 1] }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             style={{
               background:
                 'linear-gradient(105deg, transparent 0%, rgba(255,77,0,0.30) 35%, rgba(34,211,238,0.30) 65%, transparent 100%)',

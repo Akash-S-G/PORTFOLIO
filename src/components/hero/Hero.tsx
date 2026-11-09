@@ -113,7 +113,7 @@ export const Hero: React.FC = () => {
               <img
                 src="/akash-portrait.jpg"
                 alt="Akash Siddappa Goundi"
-                className="w-full h-full object-cover object-top grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-[1.04] transition-all duration-500 ease-out"
+                className="w-full h-full object-cover object-top group-hover:scale-[1.04] transition-transform duration-500 ease-out"
                 loading="eager"
               />
               {/* Orange corner tick */}

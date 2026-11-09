@@ -5,7 +5,7 @@ import { Reveal } from '../common/Reveal';
 
 export const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-black border-y-2 border-black dark:border-white relative transition-colors duration-150">
+    <section id="experience" className="py-20 bg-white dark:bg-black relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12">

@@ -6,7 +6,7 @@ import { Reveal } from '../common/Reveal';
 
 export const ContactSection: React.FC = () => {
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-white dark:bg-black border-t-2 border-black dark:border-white relative transition-colors duration-150">
+    <section id="contact" className="py-20 lg:py-28 bg-white dark:bg-black relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}

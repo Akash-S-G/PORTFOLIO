@@ -41,7 +41,7 @@ export const ArchitectureSection: React.FC = () => {
   ];
 
   return (
-    <section id="architecture" className="py-20 bg-neutral-50 dark:bg-black border-t-2 border-b-2 border-black dark:border-white relative transition-colors duration-150">
+    <section id="architecture" className="py-20 bg-neutral-50 dark:bg-black relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14">

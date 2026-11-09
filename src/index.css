@@ -18,10 +18,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Anton', 'Archivo', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.015em;
-    font-weight: 400;
+    font-family: 'Bricolage Grotesque', 'Manrope', sans-serif;
   }
 
   ::selection {
@@ -29,12 +26,11 @@
     color: #FFFFFF;
   }
 
-  /* Smooth theme crossfade: colors AND hard shadows animate on theme switch.
-     Elements with their own Tailwind transition-* utility override this. */
+  /* Uniform theme crossfade on EVERYTHING: colors AND hard offset shadows.
+     !important so per-component Tailwind durations can't desync the theme switch. */
   * {
-    transition-property: background-color, border-color, color, box-shadow, fill, stroke;
-    transition-duration: 400ms;
-    transition-timing-function: ease;
+    transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease,
+      box-shadow 300ms ease, fill 300ms ease, stroke 300ms ease, outline-color 300ms ease !important;
   }
 
   * {
