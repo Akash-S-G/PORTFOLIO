@@ -1,10 +1,27 @@
 import React from 'react';
 import { ArrowDown, Download, Sparkles, MapPin, GraduationCap } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { CopyEmailButton } from '../common/CopyEmailButton';
 
 export const Hero: React.FC = () => {
+  // Interactive photo tilt
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(tiltY, [-0.5, 0.5], [8, -8]), { stiffness: 180, damping: 18 });
+  const rotateY = useSpring(useTransform(tiltX, [-0.5, 0.5], [-8, 8]), { stiffness: 180, damping: 18 });
+
+  const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    tiltX.set((e.clientX - rect.left) / rect.width - 0.5);
+    tiltY.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const resetTilt = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+  };
+
   return (
     <section id="hero" className="relative min-h-[85vh] flex flex-col justify-center pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden bg-white dark:bg-black transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
@@ -19,8 +36,8 @@ export const Hero: React.FC = () => {
           >
             {/* Status Rectangle */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] w-fit text-xs font-mono text-black dark:text-white uppercase font-bold">
-              <span className="w-2 h-2 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
-              <span>Open to Hire</span>
+              <span className="w-2 h-2 rounded-none bg-signal inline-block" />
+              <span>Open to Work</span>
               <span className="text-neutral-400">|</span>
               <span>Software Engineering &amp; Backend Roles</span>
             </div>
@@ -35,13 +52,13 @@ export const Hero: React.FC = () => {
                 Akash Siddappa Goundi
               </h1>
               <p className="mt-3 text-base sm:text-lg font-bold text-black dark:text-white leading-relaxed">
-                I build practical backend systems that bring AI closer to the edge.
+                I make AI run where the cloud can&rsquo;t — <span className="text-signal">offline, on-device, at the edge</span>.
               </p>
             </div>
 
             {/* Subheadline */}
             <p className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-xl">
-              From offline AI inference (llama.cpp) to real-time APIs and connected devices, I engineer practical systems that work beyond the happy path.
+              Backend engineer at STON Tech building FastAPI &amp; Express architectures, squeezing quantized LLMs onto edge hardware, and wiring real-time pipelines that don&rsquo;t flinch under bad networks.
             </p>
 
             {/* Quick Credentials */}
@@ -50,7 +67,7 @@ export const Hero: React.FC = () => {
                 <GraduationCap className="w-3.5 h-3.5" />
                 B.E. ISE @ RVCE (8.37 CGPA)
               </span>
-              <span className="px-3 py-1.5 rounded-none bg-black dark:bg-white text-white dark:text-black font-bold uppercase border border-black dark:border-white">
+              <span className="px-3 py-1.5 rounded-none bg-signal text-white font-bold uppercase border border-black dark:border-white">
                 STON Tech SDE Intern
               </span>
             </div>
@@ -59,7 +76,7 @@ export const Hero: React.FC = () => {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
                 href="#overview"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-black hover:bg-signal dark:bg-white dark:hover:bg-signal dark:hover:text-white text-white dark:text-black hover:border-signal dark:hover:border-signal border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>EXPLORE MY WORK</span>
@@ -85,15 +102,25 @@ export const Hero: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
             className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2"
+            style={{ perspective: 900 }}
           >
-            <div className="w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] aspect-square rounded-none overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+            <motion.div
+              onMouseMove={handleTilt}
+              onMouseLeave={resetTilt}
+              style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+              className="group relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] aspect-square rounded-none overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-[10px_10px_0px_0px_#FF4D00] hover:border-signal cursor-crosshair transition-shadow duration-300"
+            >
               <img
                 src="/akash-portrait.jpg"
                 alt="Akash Siddappa Goundi"
-                className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-300"
+                className="w-full h-full object-cover object-top grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-[1.04] transition-all duration-500 ease-out"
                 loading="eager"
               />
-            </div>
+              {/* Orange corner tick */}
+              <div className="absolute bottom-0 right-0 w-8 h-8 bg-signal opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-start p-1">
+                <ArrowDown className="w-4 h-4 text-white -rotate-45" />
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -106,7 +133,7 @@ export const Hero: React.FC = () => {
         className="mt-8 flex flex-col items-center justify-center text-center text-neutral-600 dark:text-neutral-400 text-[11px] font-mono gap-1 select-none pointer-events-none uppercase font-bold"
       >
         <span>SCROLL FOR FULL PROFILE &amp; CASE STUDIES</span>
-        <ArrowDown className="w-3.5 h-3.5 animate-bounce stroke-[2.5]" />
+        <ArrowDown className="w-3.5 h-3.5 animate-bounce stroke-[2.5] text-signal" />
       </motion.div>
     </section>
   );

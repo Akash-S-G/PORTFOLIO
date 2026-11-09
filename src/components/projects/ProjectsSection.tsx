@@ -3,6 +3,7 @@ import { PROJECTS } from '../../data/portfolioData';
 import { ArchitectureDiagram } from '../common/ArchitectureDiagram';
 import { Github, ExternalLink, ShieldAlert, CheckCircle2, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import { RoleFilter } from '../../types/portfolio';
+import { Reveal } from '../common/Reveal';
 
 interface ProjectsSectionProps {
   roleFilter: RoleFilter;
@@ -37,8 +38,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
         {/* Section Header */}
         <div className="mb-14">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
-            <span className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-widest">
+            <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
+            <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
               ENGINEERING_CASE_STUDIES // VERIFIED_CODEBASES
             </span>
           </div>
@@ -54,14 +55,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
         {/* ============================================================ */}
         {/* FLAGSHIP PROJECT: PIHUB */}
         {/* ============================================================ */}
-        <div
+        <Reveal
           id="project-pihub"
+          variant="up"
           className="mb-16 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white transition-all duration-150 p-6 sm:p-8 lg:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] relative overflow-hidden"
         >
           {/* Top Flagship Ribbon */}
           <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-6 border-b-2 border-black dark:border-white">
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 rounded-none bg-black dark:bg-white text-white dark:text-black font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 border border-black dark:border-white">
+              <span className="px-3 py-1 rounded-none bg-signal text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 border border-black dark:border-white">
                 <Sparkles className="w-3.5 h-3.5" />
                 FLAGSHIP PROJECT
               </span>
@@ -77,7 +79,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-white dark:bg-black hover:bg-neutral-100 dark:hover:bg-neutral-900 text-black dark:text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                 <span>Source Code</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
@@ -109,7 +111,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
 
             <div className="p-4 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
               <div className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide mb-1.5 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
+                <span className="w-2 h-2 rounded-none bg-signal inline-block" />
                 Verified Individual Contribution
               </div>
               <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">{flagship.verifiedContribution}</p>
@@ -140,7 +142,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
               type="button"
               className={`px-4 py-2 font-mono text-xs font-bold uppercase transition-colors rounded-none border-2 ${
                 activeTabPIHUB === 'architecture'
-                  ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
+                  ? 'bg-signal text-white border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
                   : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white'
               }`}
             >
@@ -151,7 +153,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
               type="button"
               className={`px-4 py-2 font-mono text-xs font-bold uppercase transition-colors rounded-none border-2 ${
                 activeTabPIHUB === 'decisions'
-                  ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
+                  ? 'bg-signal text-white border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
                   : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white'
               }`}
             >
@@ -162,7 +164,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
               type="button"
               className={`px-4 py-2 font-mono text-xs font-bold uppercase transition-colors rounded-none border-2 ${
                 activeTabPIHUB === 'tradeoffs'
-                  ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
+                  ? 'bg-signal text-white border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
                   : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white'
               }`}
             >
@@ -222,7 +224,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                       Decision: {t.decision}
                     </div>
                     <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed mb-2 font-medium">
-                      <b className="text-black dark:text-white font-bold">Why:</b> {t.rationale}
+                      <b className="text-signal font-bold">Why:</b> {t.rationale}
                     </p>
                     <div className="text-[11px] font-mono text-black dark:text-white bg-neutral-200 dark:bg-neutral-800 p-2 rounded-none border border-black dark:border-white">
                       Alternative Rejected: {t.alternative}
@@ -265,7 +267,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
               </div>
             </div>
           )}
-        </div>
+        </Reveal>
 
         {/* ============================================================ */}
         {/* OTHER CASE STUDIES: SMART CART & SOL-BRIDGE */}
@@ -276,9 +278,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
             const isExpanded = !!expandedProjects[project.id];
 
             return (
-              <div
+              <Reveal
                 key={project.id}
                 id={`project-${project.id}`}
+                variant="up"
                 className={`rounded-none bg-white dark:bg-black border-2 border-black dark:border-white p-6 sm:p-8 transition-colors duration-150 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] ${
                   isHighlighted ? 'opacity-100' : 'opacity-60'
                 }`}
@@ -308,7 +311,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white dark:bg-black hover:bg-neutral-100 dark:hover:bg-neutral-900 text-black dark:text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                     >
-                      <Github className="w-4 h-4" />
+                      <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                       <span>Repository</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
@@ -316,7 +319,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                     <button
                       onClick={() => toggleProject(project.id)}
                       type="button"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 text-xs font-mono font-bold uppercase border-2 border-black dark:border-white transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-signal text-white hover:bg-signal-deep text-xs font-mono font-bold uppercase border-2 border-black dark:border-white transition-colors"
                       aria-expanded={isExpanded}
                     >
                       <span>{isExpanded ? 'Hide Architecture' : 'View Architecture'}</span>
@@ -419,8 +422,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                       </div>
                     </div>
                   </div>
-                )}
-              </div>
+                 )}
+              </Reveal>
             );
           })}
         </div>

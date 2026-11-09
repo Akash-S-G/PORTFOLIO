@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import colors from 'tailwindcss/colors';
+
 export default {
   darkMode: 'class',
   content: [
@@ -8,6 +10,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Softened light theme: warm paper instead of pure white, charcoal instead of pure black
+        white: '#FAF7F1',
+        black: '#181715',
+        neutral: colors.stone,
         // Dark theme graphite palette
         graphite: {
           950: '#060706',

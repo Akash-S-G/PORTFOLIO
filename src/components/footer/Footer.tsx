@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-black dark:text-white hover:underline transition-colors"
             >
-              <Github className="w-4 h-4" />
+              <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
               <span>GitHub</span>
             </a>
 
@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-black dark:text-white hover:underline transition-colors"
             >
-              <Linkedin className="w-4 h-4" />
+              <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
               <span>LinkedIn</span>
             </a>
 
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
           <button
             onClick={scrollToTop}
             type="button"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black border-2 border-black dark:border-white text-xs font-mono font-bold uppercase transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-signal hover:bg-signal-deep text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
             aria-label="Scroll to top of page"
           >
             <span>Back to top</span>
@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
+            <span className="w-2 h-2 rounded-none bg-signal inline-block" />
             <span>Audited against verified GitHub repositories &amp; latest resume.</span>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { EXPERIENCE } from '../../data/portfolioData';
 import { Calendar, MapPin, ShieldCheck, FileSpreadsheet, KeyRound } from 'lucide-react';
+import { Reveal } from '../common/Reveal';
 
 export const ExperienceSection: React.FC = () => {
   return (
@@ -9,8 +10,8 @@ export const ExperienceSection: React.FC = () => {
         {/* Section Header */}
         <div className="mb-12">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
-            <span className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-widest">
+            <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
+            <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
               INDUSTRY_EXPERIENCE // SOFTWARE_ENGINEERING_INTERNSHIP
             </span>
           </div>
@@ -25,8 +26,10 @@ export const ExperienceSection: React.FC = () => {
         {/* Experience Timeline / Cards */}
         <div className="space-y-8">
           {EXPERIENCE.map((exp, idx) => (
-            <div
+            <Reveal
               key={idx}
+              variant="up"
+              delay={idx * 0.1}
               className="rounded-none bg-white dark:bg-black border-2 border-black dark:border-white p-6 sm:p-8 lg:p-10 transition-colors duration-150 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] relative overflow-hidden"
             >
               {/* Role Header */}
@@ -123,7 +126,7 @@ export const ExperienceSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -21,6 +21,19 @@
     font-family: 'Archivo', 'Space Grotesk', sans-serif;
   }
 
+  ::selection {
+    background-color: #FF4D00;
+    color: #FFFFFF;
+  }
+
+  /* Smooth theme crossfade: colors AND hard shadows animate on theme switch.
+     Elements with their own Tailwind transition-* utility override this. */
+  * {
+    transition-property: background-color, border-color, color, box-shadow, fill, stroke;
+    transition-duration: 400ms;
+    transition-timing-function: ease;
+  }
+
   * {
     border-radius: 0 !important;
   }
@@ -41,7 +54,7 @@
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: #FFFFFF;
+    background: #FAF7F1;
   }
 
   ::-webkit-scrollbar-thumb {

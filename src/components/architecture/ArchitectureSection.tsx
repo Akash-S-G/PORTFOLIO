@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RevealStagger, RevealItem } from '../common/Reveal';
 import { ArrowRight } from 'lucide-react';
 
 export const ArchitectureSection: React.FC = () => {
@@ -45,8 +46,8 @@ export const ArchitectureSection: React.FC = () => {
         {/* Section Header */}
         <div className="mb-14">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
-            <span className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-widest">
+            <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
+            <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
               SYSTEMS_DESIGN_PHILOSOPHY // ARCHITECTURAL_PILLARS
             </span>
           </div>
@@ -59,20 +60,20 @@ export const ArchitectureSection: React.FC = () => {
         </div>
 
         {/* Interactive 4 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <RevealStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {principles.map((item, index) => {
             const isSelected = activePrinciple === index;
             return (
-              <button
-                key={index}
-                onClick={() => setActivePrinciple(index)}
-                type="button"
-                className={`p-5 rounded-none text-left border-2 transition-colors duration-150 flex flex-col justify-between cursor-pointer ${
-                  isSelected
-                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]'
-                    : 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900'
-                }`}
-              >
+              <RevealItem key={index} variant="scale">
+                <button
+                  onClick={() => setActivePrinciple(index)}
+                  type="button"
+                  className={`p-5 rounded-none text-left border-2 transition-colors duration-150 flex flex-col justify-between cursor-pointer ${
+                    isSelected
+                      ? 'bg-signal text-white border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]'
+                      : 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900'
+                  }`}
+                >
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider">
@@ -105,9 +106,10 @@ export const ArchitectureSection: React.FC = () => {
                   <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
                 </div>
               </button>
-            );
-          })}
-        </div>
+            </RevealItem>
+          );
+        })}
+      </RevealStagger>
 
         {/* Selected Principle Deep Dive Banner */}
         <div className="p-6 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -121,13 +123,13 @@ export const ArchitectureSection: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-neutral-700 dark:text-neutral-300 font-medium">
-              Verified in <strong className="text-black dark:text-white font-bold">{principles[activePrinciple].project}</strong> using {principles[activePrinciple].tech}
+              Verified in <strong className="text-signal font-bold">{principles[activePrinciple].project}</strong> using {principles[activePrinciple].tech}
             </p>
           </div>
 
           <a
             href={principles[activePrinciple].projectId === 'experience' ? '#experience' : `#project-${principles[activePrinciple].projectId}`}
-            className="px-4 py-2 rounded-none bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black text-xs font-mono font-bold uppercase tracking-wider transition-colors shrink-0 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+            className="px-4 py-2 rounded-none bg-signal hover:bg-signal-deep text-white text-xs font-mono font-bold uppercase tracking-wider transition-colors shrink-0 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
           >
             Jump to Case Study Flow →
           </a>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Download, MapPin, GraduationCap, Github, Linkedin, ArrowRight, Code2, Server, Cpu } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { CopyEmailButton } from '../common/CopyEmailButton';
+import { RevealStagger, RevealItem } from '../common/Reveal';
 
 export const ProfileOverviewSection: React.FC = () => {
   return (
@@ -11,8 +12,8 @@ export const ProfileOverviewSection: React.FC = () => {
         {/* Section Header */}
         <div className="mb-14">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
-            <span className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-widest">
+            <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
+            <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
               ENGINEER_PROFILE // BACKGROUND_&amp;_METRICS
             </span>
           </div>
@@ -41,10 +42,10 @@ export const ProfileOverviewSection: React.FC = () => {
 
               <div className="space-y-3.5 text-sm sm:text-base text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">
                 <p>
-                  I am a software engineering student at <strong className="text-black dark:text-white font-bold">R V College of Engineering (RVCE)</strong> focused on architecting resilient backend systems where distributed computing intersects with applied artificial intelligence and connected hardware.
+                  I am a software engineering student at <strong className="text-signal font-bold">R V College of Engineering (RVCE)</strong> focused on architecting resilient backend systems where distributed computing intersects with applied artificial intelligence and connected hardware.
                 </p>
                 <p>
-                  My engineering experience spans developing <strong className="text-black dark:text-white font-bold">FastAPI and Express microservices</strong>, quantizing LLMs for offline edge inference with <strong className="text-black dark:text-white font-bold">llama.cpp</strong>, designing resumable chunk sync protocols, and building sub-second computer vision checkout pipelines.
+                  My engineering experience spans developing <strong className="text-signal font-bold">FastAPI and Express microservices</strong>, quantizing LLMs for offline edge inference with <strong className="text-signal font-bold">llama.cpp</strong>, designing resumable chunk sync protocols, and building sub-second computer vision checkout pipelines.
                 </p>
               </div>
 
@@ -57,7 +58,7 @@ export const ProfileOverviewSection: React.FC = () => {
                 <span className="px-3 py-1.5 rounded-none bg-neutral-100 dark:bg-neutral-900 border border-black dark:border-white text-black dark:text-white font-semibold">
                   CGPA: 8.37 / 10.0
                 </span>
-                <span className="px-3 py-1.5 rounded-none bg-black dark:bg-white text-white dark:text-black font-bold uppercase border border-black dark:border-white">
+                <span className="px-3 py-1.5 rounded-none bg-signal text-white font-bold uppercase border border-black dark:border-white">
                   STON Tech SDE Intern
                 </span>
               </div>
@@ -68,7 +69,7 @@ export const ProfileOverviewSection: React.FC = () => {
               <a
                 href={`./${PERSONAL_INFO.resumeFilename}`}
                 download={PERSONAL_INFO.resumeFilename}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black font-mono text-xs font-bold uppercase tracking-wider border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-signal hover:bg-signal-deep text-white font-mono text-xs font-bold uppercase tracking-wider border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Download className="w-4 h-4 stroke-[2.5]" />
                 <span>DOWNLOAD RESUME (PDF)</span>
@@ -82,7 +83,7 @@ export const ProfileOverviewSection: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-3 rounded-none bg-white dark:bg-black hover:bg-neutral-100 dark:hover:bg-neutral-900 text-black dark:text-white border-2 border-black dark:border-white font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                 <span>GitHub</span>
               </a>
 
@@ -92,20 +93,20 @@ export const ProfileOverviewSection: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-3 rounded-none bg-white dark:bg-black hover:bg-neutral-100 dark:hover:bg-neutral-900 text-black dark:text-white border-2 border-black dark:border-white font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                 <span>LinkedIn</span>
               </a>
             </div>
           </div>
 
           {/* Right Column: Verified Engineering Metrics & Pillars */}
-          <div className="lg:col-span-5 space-y-4">
-            
+          <RevealStagger className="lg:col-span-5 space-y-4">
+
             {/* Metric 1: PIHUB Curriculum Distribution */}
-            <div className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+            <RevealItem variant="right" className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
               <div className="flex items-center justify-between mb-2">
                 <span className="font-mono text-3xl font-extrabold text-black dark:text-white">405+</span>
-                <span className="p-2 rounded-none bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white">
+                <span className="p-2 rounded-none bg-signal text-white border border-black dark:border-white">
                   <Server className="w-5 h-5" />
                 </span>
               </div>
@@ -115,13 +116,13 @@ export const ProfileOverviewSection: React.FC = () => {
               <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium">
                 Manifest-based educational distribution architecture supporting byte-offset resumption over unstable classroom wireless networks.
               </p>
-            </div>
+            </RevealItem>
 
             {/* Metric 2: Competitive Problem Solving */}
-            <div className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+            <RevealItem variant="right" className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
               <div className="flex items-center justify-between mb-2">
                 <span className="font-mono text-3xl font-extrabold text-black dark:text-white">300+</span>
-                <span className="p-2 rounded-none bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white">
+                <span className="p-2 rounded-none bg-signal text-white border border-black dark:border-white">
                   <Code2 className="w-5 h-5" />
                 </span>
               </div>
@@ -131,13 +132,13 @@ export const ProfileOverviewSection: React.FC = () => {
               <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium">
                 Rigorous algorithmic problem solving across LeetCode &amp; Codeforces focusing on data structures, graphs, dynamic programming, and complexity optimization.
               </p>
-            </div>
+            </RevealItem>
 
             {/* Metric 3: Offline Edge AI Inference */}
-            <div className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+            <RevealItem variant="right" className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
               <div className="flex items-center justify-between mb-2">
                 <span className="font-mono text-2xl font-extrabold text-black dark:text-white">Offline</span>
-                <span className="p-2 rounded-none bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white">
+                <span className="p-2 rounded-none bg-signal text-white border border-black dark:border-white">
                   <Cpu className="w-5 h-5" />
                 </span>
               </div>
@@ -147,17 +148,19 @@ export const ProfileOverviewSection: React.FC = () => {
               <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium">
                 Edge deployment of 4-bit/8-bit quantized GGUF models on constrained edge hardware using llama.cpp with token-by-token streaming response pipelines.
               </p>
-            </div>
+            </RevealItem>
 
             {/* Direct Link to Flagship Case Studies */}
-            <a
-              href="#projects"
-              className="flex items-center justify-between p-4 rounded-none bg-black dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-black border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] group"
-            >
-              <span>Explore Verified Codebase Case Studies</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </div>
+            <RevealItem variant="scale">
+              <a
+                href="#projects"
+                className="flex items-center justify-between p-4 rounded-none bg-black dark:bg-white hover:bg-signal-deep text-white dark:text-black border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] group"
+              >
+                <span>Explore Verified Codebase Case Studies</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </RevealItem>
+          </RevealStagger>
         </div>
       </div>
     </section>

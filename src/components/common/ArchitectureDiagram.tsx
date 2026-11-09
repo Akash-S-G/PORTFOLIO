@@ -37,7 +37,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
     <div className="w-full rounded-none bg-white dark:bg-black border-2 border-black dark:border-white p-5 transition-colors duration-150">
       <div className="flex items-center justify-between mb-4 border-b-2 border-black dark:border-white pb-3">
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
+          <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
           <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-black dark:text-white">
             {title}
           </h4>
@@ -60,7 +60,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
               type="button"
               className={`text-left p-3.5 rounded-none border-2 transition-colors duration-150 relative flex flex-col justify-between min-h-[96px] cursor-pointer ${
                 isSelected
-                  ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]'
+                  ? 'bg-signal text-white border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]'
                   : 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900'
               }`}
             >
@@ -107,7 +107,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
                 <span className="font-bold">{conn.from}</span>
                 <span className="font-extrabold">→</span>
                 <span className="font-bold">{conn.to}</span>
-                <span className="text-[10px] font-bold text-white bg-black dark:text-black dark:bg-white px-1.5 py-0.2 ml-1">
+                <span className="text-[10px] font-bold text-white bg-signal px-1.5 py-0.2 ml-1">
                   {conn.protocol}
                 </span>
               </div>
@@ -119,7 +119,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
       {/* Inspector Details Card */}
       {selectedNode && (
         <div className="p-4 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] flex items-start gap-3">
-          <div className="w-7 h-7 rounded-none bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white flex items-center justify-center shrink-0 mt-0.5">
+          <div className="w-7 h-7 rounded-none bg-signal text-white border border-black dark:border-white flex items-center justify-center shrink-0 mt-0.5">
             <Info className="w-4 h-4" />
           </div>
           <div className="flex-1">
@@ -127,7 +127,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
               <span className="text-xs font-bold text-black dark:text-white uppercase tracking-wide">
                 {selectedNode.label}
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-none bg-black dark:bg-white text-white dark:text-black font-bold uppercase">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-none bg-signal text-white font-bold uppercase">
                 {selectedNode.sublabel}
               </span>
             </div>

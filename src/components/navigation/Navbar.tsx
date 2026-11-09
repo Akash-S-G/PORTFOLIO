@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Download, Github, Linkedin } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
-import { RoleFilter } from '../../types/portfolio';
 import { ThemeToggle } from '../common/ThemeToggle';
 
-interface NavbarProps {
-  activeRole: RoleFilter;
-  onSelectRole: (role: RoleFilter) => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ activeRole, onSelectRole }) => {
+export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -60,18 +54,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeRole, onSelectRole }) => {
             href="#hero"
             className="flex items-center gap-3 group focus:outline-none"
           >
-            <div className="w-9 h-9 rounded-none bg-black dark:bg-white border-2 border-black dark:border-white flex items-center justify-center font-mono font-bold text-sm text-white dark:text-black transition-colors duration-150">
+            <div className="w-9 h-9 rounded-none bg-signal border-2 border-signal flex items-center justify-center font-mono font-bold text-sm text-white transition-colors duration-150 group-hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:group-hover:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]">
               ASG
             </div>
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-sm text-black dark:text-white tracking-tight">
-                Akash Siddappa Goundi
-              </span>
-              <span className="font-mono text-[10px] text-neutral-600 dark:text-neutral-400 tracking-widest flex items-center gap-1.5 uppercase font-semibold">
-                <span className="w-1.5 h-1.5 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
-                AVAILABLE_FOR_ROLES
-              </span>
-            </div>
+            <span className="font-display font-bold text-sm text-black dark:text-white tracking-tight">
+              Akash Siddappa Goundi
+            </span>
           </a>
 
           {/* Desktop Navigation Links */}
@@ -84,8 +72,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeRole, onSelectRole }) => {
                   href={link.href}
                   className={`px-3 py-1.5 rounded-none text-xs font-mono font-bold uppercase tracking-wider transition-colors duration-150 ${
                     isActive
-                      ? 'bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white'
-                      : 'text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800'
+                      ? 'bg-signal text-white border border-black dark:border-white'
+                      : 'text-black dark:text-white hover:text-cyan-dark dark:hover:text-cyan hover:bg-neutral-200 dark:hover:bg-neutral-800'
                   }`}
                 >
                   {link.name}
@@ -96,40 +84,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeRole, onSelectRole }) => {
 
           {/* Right Action Icons & Theme Toggle */}
           <div className="hidden sm:flex items-center gap-2.5">
-            {/* Perspective Filter */}
-            <div className="hidden lg:flex items-center gap-0.5 bg-neutral-100 dark:bg-neutral-900 p-0.5 rounded-none border border-black dark:border-white text-[10px] font-mono">
-              <button
-                onClick={() => onSelectRole('all')}
-                className={`px-2 py-1 rounded-none font-bold uppercase transition-colors ${
-                  activeRole === 'all'
-                    ? 'bg-black dark:bg-white text-white dark:text-black'
-                    : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                All
-              </button>
-              <button
-                onClick={() => onSelectRole('backend')}
-                className={`px-2 py-1 rounded-none font-bold uppercase transition-colors ${
-                  activeRole === 'backend'
-                    ? 'bg-black dark:bg-white text-white dark:text-black'
-                    : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                Backend
-              </button>
-              <button
-                onClick={() => onSelectRole('ai-edge')}
-                className={`px-2 py-1 rounded-none font-bold uppercase transition-colors ${
-                  activeRole === 'ai-edge'
-                    ? 'bg-black dark:bg-white text-white dark:text-black'
-                    : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                Edge AI
-              </button>
-            </div>
-
             {/* Dark / Light Mode Switcher */}
             <ThemeToggle />
 
@@ -140,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeRole, onSelectRole }) => {
               aria-label="GitHub Profile"
               className="p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white transition-colors"
             >
-              <Github className="w-4 h-4" />
+              <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
             </a>
 
             <a
@@ -150,13 +104,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeRole, onSelectRole }) => {
               aria-label="LinkedIn Profile"
               className="p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white transition-colors"
             >
-              <Linkedin className="w-4 h-4" />
+              <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
             </a>
 
             <a
               href={`./${PERSONAL_INFO.resumeFilename}`}
               download={PERSONAL_INFO.resumeFilename}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-black dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-black font-mono text-xs font-bold uppercase tracking-wider border-2 border-black dark:border-white transition-colors"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-black dark:bg-white hover:bg-signal-deep text-white dark:text-black font-mono text-xs font-bold uppercase tracking-wider border-2 border-black dark:border-white transition-colors"
             >
               <Download className="w-3.5 h-3.5 stroke-[2.5]" />
               <span>Resume</span>
@@ -202,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeRole, onSelectRole }) => {
                 rel="noopener noreferrer"
                 className="p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white text-black dark:text-white"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
               </a>
               <a
                 href={PERSONAL_INFO.linkedin}
@@ -210,14 +164,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeRole, onSelectRole }) => {
                 rel="noopener noreferrer"
                 className="p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white text-black dark:text-white"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
               </a>
             </div>
 
             <a
               href={`./${PERSONAL_INFO.resumeFilename}`}
               download={PERSONAL_INFO.resumeFilename}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-none bg-black dark:bg-white text-white dark:text-black font-mono text-xs font-bold uppercase border-2 border-black dark:border-white"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-none bg-signal text-white font-mono text-xs font-bold uppercase border-2 border-black dark:border-white"
             >
               <Download className="w-4 h-4" />
               <span>Resume PDF</span>

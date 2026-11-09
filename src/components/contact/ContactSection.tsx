@@ -2,6 +2,7 @@ import React from 'react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { Mail, Phone, MapPin, Github, Linkedin, Download, ArrowUpRight } from 'lucide-react';
 import { CopyEmailButton } from '../common/CopyEmailButton';
+import { Reveal } from '../common/Reveal';
 
 export const ContactSection: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ export const ContactSection: React.FC = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-none bg-neutral-100 dark:bg-neutral-900 border-2 border-black dark:border-white text-xs font-mono text-black dark:text-white mb-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] uppercase font-bold">
-              <span className="w-2 h-2 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
+              <span className="w-2 h-2 rounded-none bg-signal inline-block" />
               <span>COMMUNICATION_CHANNELS</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
@@ -23,7 +24,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Main Contact Card */}
-          <div className="p-8 sm:p-10 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] relative overflow-hidden">
+          <Reveal variant="up" className="p-8 sm:p-10 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] relative overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               {/* Left Column: Direct Action */}
               <div className="space-y-6">
@@ -42,7 +43,7 @@ export const ContactSection: React.FC = () => {
                 <div className="flex flex-wrap items-center gap-3">
                   <a
                     href={`mailto:${PERSONAL_INFO.email}?subject=Engineering%20Opportunity%20Discussion`}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-none bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black font-mono text-xs font-bold uppercase tracking-wide border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-none bg-signal hover:bg-signal-deep text-white font-mono text-xs font-bold uppercase tracking-wide border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
                   >
                     <Mail className="w-4 h-4 stroke-[2.5]" />
                     <span>SEND EMAIL</span>
@@ -101,7 +102,7 @@ export const ContactSection: React.FC = () => {
                   className="flex items-center justify-between p-3 rounded-none bg-white dark:bg-black border border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-xs"
                 >
                   <div className="flex items-center gap-2.5">
-                    <Github className="w-4 h-4" />
+                    <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                     <div>
                       <div className="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 uppercase font-bold">GitHub Profile</div>
                       <span className="text-xs font-mono font-bold text-black dark:text-white">
@@ -109,7 +110,7 @@ export const ContactSection: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpRight className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                 </a>
 
                 {/* LinkedIn Item */}
@@ -120,7 +121,7 @@ export const ContactSection: React.FC = () => {
                   className="flex items-center justify-between p-3 rounded-none bg-white dark:bg-black border border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-xs"
                 >
                   <div className="flex items-center gap-2.5">
-                    <Linkedin className="w-4 h-4" />
+                    <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                     <div>
                       <div className="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 uppercase font-bold">LinkedIn Profile</div>
                       <span className="text-xs font-mono font-bold text-black dark:text-white">
@@ -128,7 +129,7 @@ export const ContactSection: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpRight className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                 </a>
 
                 {/* Location Item */}
@@ -138,7 +139,7 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
