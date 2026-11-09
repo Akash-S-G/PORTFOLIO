@@ -97,7 +97,7 @@ const PortraitMesh: React.FC<PortraitMeshProps> = ({ pointer, isDark }) => {
 const ImageFallback: React.FC = () => (
   <div className="w-full h-full rounded-full overflow-hidden border-4 border-slate-200 dark:border-graphite-700 shadow-2xl">
     <img
-      src="/akash-portrait.jpg"
+      src="./akash-portrait.jpg"
       alt="Akash Siddappa Goundi"
       className="w-full h-full object-cover object-top"
     />

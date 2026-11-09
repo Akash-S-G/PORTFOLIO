@@ -14,11 +14,11 @@ interface RevealProps {
 }
 
 const offsets: Record<RevealVariant, { x?: number; y?: number; scale?: number }> = {
-  up: { y: 36 },
-  down: { y: -36 },
-  left: { x: -48 },
-  right: { x: 48 },
-  scale: { scale: 0.92, y: 20 },
+  up: { y: 24 },
+  down: { y: -24 },
+  left: { x: -32 },
+  right: { x: 32 },
+  scale: { scale: 0.97, y: 14 },
   fade: {},
 };
 
@@ -26,7 +26,7 @@ export const Reveal: React.FC<RevealProps> = ({
   children,
   variant = 'up',
   delay = 0,
-  duration = 0.55,
+  duration = 0.6,
   className = '',
   once = true,
   id,
@@ -50,7 +50,7 @@ export const Reveal: React.FC<RevealProps> = ({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: '-60px' }}
+      viewport={{ once, margin: '0px 0px -10% 0px' }}
       className={className}
     >
       {children}
@@ -68,7 +68,7 @@ export const RevealStagger: React.FC<{ children: React.ReactNode; className?: st
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       variants={{ hidden: {}, visible: { transition: { staggerChildren: stagger } } }}
       className={className}
     >
@@ -88,7 +88,7 @@ export const RevealItem: React.FC<{ children: React.ReactNode; className?: strin
     <motion.div
       variants={{
         hidden,
-        visible: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+        visible: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
       }}
       className={className}
     >

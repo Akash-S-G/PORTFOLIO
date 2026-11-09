@@ -111,7 +111,7 @@ export const Hero: React.FC = () => {
               className="group relative w-full max-w-[380px] sm:max-w-[460px] lg:max-w-[560px] aspect-square rounded-none overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-[10px_10px_0px_0px_#FF4D00] hover:border-signal cursor-crosshair transition-shadow duration-300"
             >
               <img
-                src="/akash-portrait.jpg"
+                src="./akash-portrait.jpg"
                 alt="Akash Siddappa Goundi"
                 className="w-full h-full object-cover object-top group-hover:scale-[1.04] transition-transform duration-500 ease-out"
                 loading="eager"

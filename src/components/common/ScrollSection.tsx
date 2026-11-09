@@ -10,10 +10,10 @@ interface ScrollSectionProps {
 }
 
 const offsets = {
-  up: { y: 45 },
-  left: { x: -60, y: 0 },
-  right: { x: 60, y: 0 },
-  scale: { scale: 0.94, y: 30 },
+  up: { y: 28 },
+  left: { x: -36, y: 0 },
+  right: { x: 36, y: 0 },
+  scale: { scale: 0.97, y: 16 },
 };
 
 export const ScrollSection: React.FC<ScrollSectionProps> = ({
@@ -30,7 +30,7 @@ export const ScrollSection: React.FC<ScrollSectionProps> = ({
       x: 0,
       y: 0,
       scale: 1,
-      transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
@@ -40,7 +40,7 @@ export const ScrollSection: React.FC<ScrollSectionProps> = ({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-70px' }}
+      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       className={className}
     >
       {children}

@@ -111,7 +111,7 @@ const SpatialPortraitCard: React.FC<MonolithProps> = ({ pointer, isDark }) => {
 const FallbackImage: React.FC = () => (
   <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-200 dark:border-graphite-700">
     <img
-      src="/akash-portrait.jpg"
+      src="./akash-portrait.jpg"
       alt="Akash Siddappa Goundi"
       className="w-full h-full object-cover"
     />
