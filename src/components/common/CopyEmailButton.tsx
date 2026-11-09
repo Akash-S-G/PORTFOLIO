@@ -4,13 +4,13 @@ import { Copy, Check } from 'lucide-react';
 interface CopyEmailButtonProps {
   email: string;
   className?: string;
-  variant?: 'primary' | 'subtle';
+  variant?: 'primary' | 'subtle' | 'light';
 }
 
 export const CopyEmailButton: React.FC<CopyEmailButtonProps> = ({
   email,
   className = '',
-  variant = 'subtle'
+  variant = 'primary'
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -24,25 +24,26 @@ export const CopyEmailButton: React.FC<CopyEmailButtonProps> = ({
     }
   };
 
-  if (variant === 'primary') {
+  if (variant === 'primary' || variant === 'light') {
     return (
       <button
         onClick={handleCopy}
-        className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-semibold tracking-wide transition-all duration-200 border ${
+        type="button"
+        className={`inline-flex items-center gap-2 px-5 py-3 rounded-none font-mono text-xs font-bold uppercase tracking-wider transition-colors duration-150 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] ${
           copied
-            ? 'bg-lime text-graphite-950 border-lime shadow-[0_0_16px_rgba(197,243,107,0.3)]'
-            : 'bg-graphite-850 hover:bg-graphite-800 text-ivory border-graphite-700 hover:border-lime/60'
+            ? 'bg-emerald-600 text-white border-black dark:border-white'
+            : 'bg-white dark:bg-black hover:bg-neutral-100 dark:hover:bg-neutral-900 text-black dark:text-white border-black dark:border-white'
         } ${className}`}
         title="Copy email to clipboard"
       >
         {copied ? (
           <>
-            <Check className="w-4 h-4 text-graphite-950 stroke-[2.5]" />
-            <span>EMAIL COPIED</span>
+            <Check className="w-4 h-4 stroke-[3]" />
+            <span>EMAIL COPIED!</span>
           </>
         ) : (
           <>
-            <Copy className="w-4 h-4 text-lime" />
+            <Copy className="w-4 h-4 stroke-[2.5]" />
             <span>COPY EMAIL</span>
           </>
         )}
@@ -53,18 +54,19 @@ export const CopyEmailButton: React.FC<CopyEmailButtonProps> = ({
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-mono text-[11px] text-ivory-dim hover:text-ivory bg-graphite-850/80 hover:bg-graphite-800 border border-graphite-700/60 hover:border-graphite-600 transition-all ${className}`}
+      type="button"
+      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-none font-mono text-xs uppercase font-bold text-black dark:text-white bg-white dark:bg-black hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-black dark:border-white transition-colors ${className}`}
       title="Copy email to clipboard"
     >
       {copied ? (
         <>
-          <Check className="w-3.5 h-3.5 text-lime" />
-          <span className="text-lime font-medium">Copied!</span>
+          <Check className="w-3.5 h-3.5 stroke-[3] text-emerald-600 dark:text-lime" />
+          <span>COPIED</span>
         </>
       ) : (
         <>
-          <Copy className="w-3.5 h-3.5 text-ivory-muted" />
-          <span>Copy</span>
+          <Copy className="w-3.5 h-3.5" />
+          <span>COPY</span>
         </>
       )}
     </button>

@@ -4,66 +4,66 @@
 
 @layer base {
   :root {
-    --bg-primary: #0B0D0C;
-    --text-primary: #F4F1E8;
-    --accent-lime: #C5F36B;
-    --accent-cyan: #38C7D2;
-    --card-bg: #141816;
-    --border-color: #232A27;
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
   }
 
   html {
-    color-scheme: dark;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    scroll-behavior: smooth;
+    border-radius: 0 !important;
+    font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif;
   }
 
-  body {
-    background-color: #0B0D0C;
-    background-image: 
-      radial-gradient(circle at 50% 0%, rgba(197, 243, 107, 0.04) 0%, transparent 40%),
-      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-    background-size: 100% 100%, 48px 48px, 48px 48px;
-    background-repeat: no-repeat, repeat, repeat;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Archivo', 'Space Grotesk', sans-serif;
   }
 
-  /* Custom subtle scrollbar */
+  * {
+    border-radius: 0 !important;
+  }
+
+  /* Custom scrollbar - sharp rectangles */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0B0D0C;
+    background: transparent;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 0;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #FFFFFF;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #232A27;
-    border-radius: 3px;
+    background: #737373;
+    border-radius: 0;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #343E3A;
+    background: #000000;
   }
 }
 
 @layer utilities {
-  .text-glow-lime {
-    text-shadow: 0 0 16px rgba(197, 243, 107, 0.4);
+  .tech-grid-pattern-dark {
+    background-image: radial-gradient(#FFFFFF 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.08;
   }
 
-  .box-glow-lime {
-    box-shadow: 0 0 24px -4px rgba(197, 243, 107, 0.15);
-  }
-
-  .border-glow-lime {
-    border-color: rgba(197, 243, 107, 0.4);
-    box-shadow: 0 0 16px -2px rgba(197, 243, 107, 0.2);
-  }
-
-  .tech-grid-pattern {
-    background-image: radial-gradient(rgba(197, 243, 107, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
+  .tech-grid-pattern-light {
+    background-image: radial-gradient(#000000 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.07;
   }
 }

@@ -141,3 +141,4 @@ This portfolio follows strict factual accuracy rules:
 - **Implemented vs. Planned:** Every project clearly distinguishes working source code from future architectural plans.
 - **No private secrets:** No API keys, credentials, or private repository URLs are exposed in frontend code.
 - Detailed audit notes are available in [`CONTENT_AUDIT.md`](CONTENT_AUDIT.md).
+

@@ -1,7 +1,7 @@
 # Content Audit & Source-of-Truth Verification
 
 **Subject:** Akash Siddappa Goundi  
-**Date of Audit:** October 19, 2026  
+**Date of Audit:** November 9, 2026  
 **Auditor:** Antigravity Senior Engineering Assistant  
 
 ---
@@ -11,14 +11,15 @@
 1. **Local Filesystem & Git Configuration:**
    - Git User: `rvceis` (`akashsgoundi.is23@rvce.edu.in`)
    - Local Codebase: `/home/akash/Desktop/PIHUB` (`backend/pihub/api/main.py` and `backend/gateway/app/main.py`)
-   - User Portrait Image: `/home/akash/.gemini/antigravity/brain/4deb3f71-a7dd-4b22-8a04-42058933c1b6/.user_uploaded/media_1792404451989_a2c8a216.jpg`
+   - User Portrait Image: `/home/akash/Desktop/PORTFOLIO/public/akash-portrait.jpg`
+   - User Updated Resume: `/home/akash/Desktop/PORTFOLIO/public/RESUME.pdf` (and `public/Akash-Siddappa-Goundi-Resume.pdf`)
 
 2. **Public GitHub Repositories Audited:**
    - Profile: `https://github.com/Akash-S-G`
    - Flagship PIHUB: `https://github.com/Akash-S-G/pihub` (Confirmed: FastAPI, GGUF/llama.cpp inference, 405+ packs, SQLite, Qdrant vector retrieval, UDP beacon on port 47890, chunk offset resume).
    - Sol-Bridge: `https://github.com/Akash-S-G/Sol-Bridge` (Confirmed: Express.js, PostgreSQL 16, TimescaleDB time-series ingestion, Redis 7 Pub/Sub, MQTT broker port 1883).
    - Smart Cart: `https://github.com/Akash-S-G/SMART-CART` (Confirmed: FastAPI backend, YOLO11n scanner tuning, WebSockets live broadcast, Playwright E2E suite, Modal cloud fallback).
-   - FundShield ML: `https://github.com/Akash-S-G/FUNDSHIELD-ML` (Confirmed: Dockerized FastAPI microservice, ImageHash perceptual duplicate detection, ExifRead metadata/tampering, YOLOv8 stage classifier, Scikit-learn Isolation Forest anomaly engine).
+   - *Note on FundShield:* Removed from active portfolio presentation per user instruction and updated resume.
 
 3. **Academic & Professional Information:**
    - Institution: R V College of Engineering (RVCE), Bengaluru, India
@@ -37,17 +38,11 @@
 | **PIHUB** | FastAPI gateway, llama.cpp quantized GGUF execution, 405+ pack manifests, chunk resume, UDP beacon discovery, Qdrant offline knowledge chunks | Deploying 70B+ parameter models on bare Raspberry Pi without server offload |
 | **Sol-Bridge** | Node/Express API, TimescaleDB hypertables, Redis Pub/Sub, MQTT telemetry ingestion, JWT auth | Production dynamic pricing ML models and external payment gateway live processing (Razorpay/Twilio) |
 | **Smart Cart** | FastAPI catalog, YOLO11n object scanner with tuned confidence (0.35), WebSockets live sync, stock decrement, PDF receipt generation | Multi-angle overhead camera fusion arrays for 100% item occlusion disambiguation |
-| **FundShield** | FastAPI microservice, ImageHash duplicate detection, ExifRead tampering detection, Isolation Forest anomaly scoring | Automated conclusive fraud declarations (system only outputs probabilistic risk scores for human review); live on-chain smart contract settlement |
 
 ---
 
-## 3. Discovered vs. Omitted Details
+## 3. Visual & Interactive System Design
 
-- **Social Profiles:**
-  - GitHub: Verified (`https://github.com/Akash-S-G`)
-  - LinkedIn: Verified (`https://linkedin.com/in/akash-goundi-27320b303`)
-  - LeetCode / Codeforces: Achievement of 300+ solved problems is highlighted from verified resume without fabricating unverified personal usernames.
-- **Resume PDF:**
-  - Real, vector PDF generated at `public/Akash-Siddappa-Goundi-Resume.pdf` containing strictly audited resume details.
-- **Photos & Media:**
-  - High-resolution user portrait photo verified and integrated with technical HUD framing into the About section and metadata. Zero stock photography or fabricated persona assets.
+- **Theme:** Clean, modern light theme with high-contrast typography, slate surface hierarchy, and electric lime & indigo technical accents.
+- **3D Implementation:** Replaced the disconnected 3D project sphere network with a bespoke Three.js / React Three Fiber interactive 3D portrait card (`Portrait3D.tsx`) featuring real-time mouse-tracking tilt, dynamic lighting, and glowing orbital rings.
+- **Resume Access:** Synchronized latest resume PDF available for direct download and viewing across navigation, hero, and contact sections.

@@ -273,87 +273,6 @@ export const PROJECTS: ProjectData[] = [
     },
     githubUrl: 'https://github.com/Akash-S-G/Sol-Bridge'
   },
-  {
-    id: 'fundshield',
-    title: 'FundShield — AI-Powered Welfare Verification Microservice',
-    category: 'Computer Vision & Anomaly Detection',
-    roleTag: 'featured',
-    tagline: 'Dockerized ML microservice providing image tampering detection, construction stage verification, and transaction risk scoring.',
-    summary: 'A computer-vision and anomaly detection microservice created to inspect visual construction evidence and flag statistical anomalies in welfare fund disbursements.',
-    problem: 'Government and NGO housing grants frequently suffer from fraudulent fund drawdowns supported by duplicate or manipulated site photographs and abnormal payout transactions.',
-    verifiedContribution: 'Designed the Dockerized FastAPI ML microservice, image verification pipeline with perceptual hashing (ImageHash) and EXIF metadata extraction, YOLOv8 stage classification, and Scikit-learn Isolation Forest risk engine.',
-    teamContext: 'Designed as the machine learning verification component for a multi-tier welfare audit platform.',
-    technologies: ['FastAPI', 'Python', 'OpenCV', 'ImageHash', 'ExifRead', 'YOLOv8', 'Scikit-learn', 'Docker'],
-    keyDecisions: [
-      'Multi-signal image auditing: Combined EXIF device metadata extraction, perceptual image hashing for duplicate reuse detection, and screenshot artifact recognition.',
-      'Risk scoring over absolute claims: Designed the engine to output probabilistic risk flags (e.g. 0.0 to 1.0) rather than making unfounded automated fraud declarations.',
-      'Unsupervised transaction anomaly detection: Trained Scikit-learn Isolation Forest models on simulated transaction flows to flag anomalous distribution bursts and round-trip transfers.',
-      'Decoupled microservice architecture: Packaged the entire verification pipeline into a standalone Docker container ready to integrate with web gateways.'
-    ],
-    outcomesAndLimitations: {
-      verified: [
-        'Implemented FastAPI endpoints for image verification and anomaly risk scoring.',
-        'Perceptual hashing successfully detects identical or slightly transformed images uploaded under different beneficiary claims.',
-        'Isolation Forest pipeline identifies high-risk transaction patterns from ledger records.'
-      ],
-      limitations: [
-        'Historical project literature mentions an EfficientNet-B0 model evaluated with 89% accuracy; in production practice, variations in camera quality, weather, and lighting require human-in-the-loop review.',
-        'Blockchain smart contract integration remains a documented architecture specification rather than an active on-chain production contract.'
-      ]
-    },
-    architectureFlow: {
-      description: 'Image and transaction intake to multi-stage verification pipeline and anomaly scoring.',
-      nodes: [
-        {
-          id: 'claim_app',
-          label: 'Beneficiary Claim App',
-          sublabel: 'Proof Submission',
-          role: 'Uploads construction site photos and milestone payout requests.',
-          details: 'Captures raw JPEG with device metadata intact.',
-          category: 'client'
-        },
-        {
-          id: 'ml_api',
-          label: 'FastAPI ML Service',
-          sublabel: 'Verification Gateway',
-          role: 'Parses uploads, sanitizes metadata, and orchestrates verification passes.',
-          details: 'Async request pipeline in Docker container.',
-          category: 'gateway'
-        },
-        {
-          id: 'img_engine',
-          label: 'Image Verification Engine',
-          sublabel: 'ExifRead + ImageHash',
-          role: 'Calculates perceptual image hashes to detect reuse and analyzes EXIF timestamps and camera tags.',
-          details: 'Flags duplicate claims and screenshot tampering.',
-          category: 'ai-inference'
-        },
-        {
-          id: 'stage_model',
-          label: 'Stage Classifier (YOLO/CNN)',
-          sublabel: 'Visual Understanding',
-          role: 'Verifies physical progress stages (e.g. Foundation vs Roof level).',
-          details: 'Detects structural construction milestones from images.',
-          category: 'ai-inference'
-        },
-        {
-          id: 'anomaly_engine',
-          label: 'Isolation Forest Engine',
-          sublabel: 'Scikit-Learn Risk Model',
-          role: 'Evaluates transaction disbursement frequency and amounts against normal distribution baselines.',
-          details: 'Computes anomaly scores to highlight suspicious payout patterns.',
-          category: 'edge-sync'
-        }
-      ],
-      connections: [
-        { from: 'claim_app', to: 'ml_api', protocol: 'HTTPS POST / Multipart', label: 'Claim Proofs' },
-        { from: 'ml_api', to: 'img_engine', protocol: 'In-Memory Matrix', label: 'Hash & Metadata Pass' },
-        { from: 'ml_api', to: 'stage_model', protocol: 'Tensor / PyTorch', label: 'Milestone Classification' },
-        { from: 'ml_api', to: 'anomaly_engine', protocol: 'Scikit Vectorizer', label: 'Transaction Risk Scoring' }
-      ]
-    },
-    githubUrl: 'https://github.com/Akash-S-G/FUNDSHIELD-ML'
-  }
 ];
 
 export const EXPERIENCE: ExperienceData[] = [
@@ -382,7 +301,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     category: 'Languages',
     description: 'Strong foundation in systems and application development.',
     skills: [
-      { name: 'Python', verifiedUse: 'FastAPI backends, llama.cpp bindings, OpenCV pipelines, ML verification microservices', relatedProjects: ['pihub', 'smart-cart', 'fundshield'] },
+      { name: 'Python', verifiedUse: 'FastAPI backends, llama.cpp bindings, OpenCV pipelines, and ML workflows', relatedProjects: ['pihub', 'smart-cart'] },
       { name: 'C++', verifiedUse: 'Data structures & algorithms, low-level computation, competitive problem solving', relatedProjects: [] },
       { name: 'C', verifiedUse: 'Systems fundamentals, memory management, low-level architecture', relatedProjects: [] },
       { name: 'JavaScript', verifiedUse: 'Node.js, Express.js microservices, asynchronous web services', relatedProjects: ['sol-bridge'] },
@@ -393,7 +312,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     category: 'Backend Engineering',
     description: 'Scalable service architectures, real-time streaming, and resilient APIs.',
     skills: [
-      { name: 'FastAPI', verifiedUse: 'Primary framework for PIHUB edge nodes, Smart Cart vision API, and FundShield ML service', relatedProjects: ['pihub', 'smart-cart', 'fundshield'] },
+      { name: 'FastAPI', verifiedUse: 'Primary framework for PIHUB edge nodes and Smart Cart vision API', relatedProjects: ['pihub', 'smart-cart'] },
       { name: 'Express.js', verifiedUse: 'Microservice routing, REST endpoints, and authentication in Sol-Bridge and STON Tech', relatedProjects: ['sol-bridge'] },
       { name: 'REST APIs', verifiedUse: 'Contract-first endpoint design, structured logging, error handling', relatedProjects: ['pihub', 'sol-bridge', 'smart-cart'] },
       { name: 'WebSockets', verifiedUse: 'Real-time cart state synchronization and live retail scanner events', relatedProjects: ['smart-cart'] },
@@ -406,9 +325,9 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     skills: [
       { name: 'llama.cpp & GGUF', verifiedUse: 'Local quantized model loading, memory management, and offline token streaming', relatedProjects: ['pihub'] },
       { name: 'LLM Integration', verifiedUse: 'Context retrieval, prompt assembly, and offline RAG pipelines', relatedProjects: ['pihub'] },
-      { name: 'Computer Vision (OpenCV)', verifiedUse: 'Frame pre-processing, image hashing, tampering detection, and camera feeds', relatedProjects: ['smart-cart', 'fundshield'] },
-      { name: 'YOLO (YOLOv8 / YOLO11n)', verifiedUse: 'Object detection in retail checkout and structural milestone classification', relatedProjects: ['smart-cart', 'fundshield'] },
-      { name: 'Scikit-Learn', verifiedUse: 'Isolation Forest unsupervised anomaly detection for transaction risk scoring', relatedProjects: ['fundshield'] }
+      { name: 'Computer Vision (OpenCV)', verifiedUse: 'Frame pre-processing, real-time camera feeds, and object detection pipelines', relatedProjects: ['smart-cart'] },
+      { name: 'YOLO (YOLOv8 / YOLO11n)', verifiedUse: 'Object detection in retail checkout and product recognition', relatedProjects: ['smart-cart'] },
+      { name: 'Scikit-Learn', verifiedUse: 'Classical ML models, feature engineering, and prototype experimentation', relatedProjects: [] }
     ]
   },
   {
@@ -429,8 +348,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     skills: [
       { name: 'Linux', verifiedUse: 'Primary development and deployment environment; systemd and networking configuration', relatedProjects: ['pihub'] },
       { name: 'Raspberry Pi', verifiedUse: 'Edge node hardware host, Wi-Fi hotspot creation, and local gateway operations', relatedProjects: ['pihub'] },
-      { name: 'Docker & Compose', verifiedUse: 'Multi-container orchestration for distributed hubs and microservice stacks', relatedProjects: ['pihub', 'sol-bridge', 'fundshield'] },
-      { name: 'Git & GitHub', verifiedUse: 'Version control, branch management, pull request workflows, CI configuration', relatedProjects: ['pihub', 'sol-bridge', 'smart-cart', 'fundshield'] },
+      { name: 'Docker & Compose', verifiedUse: 'Multi-container orchestration for distributed hubs and microservice stacks', relatedProjects: ['pihub', 'sol-bridge'] },
+      { name: 'Git & GitHub', verifiedUse: 'Version control, branch management, pull request workflows, CI configuration', relatedProjects: ['pihub', 'sol-bridge', 'smart-cart'] },
       { name: 'MQTT', verifiedUse: 'Lightweight IoT sensor protocol for continuous telemetry streaming', relatedProjects: ['sol-bridge'] }
     ]
   },
@@ -484,3 +403,4 @@ export const ACHIEVEMENTS: AchievementData[] = [
     proofNote: 'Verified achievement from academic resume.'
   }
 ];
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="light scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
@@ -11,7 +11,6 @@
     <meta name="description" content="Portfolio of Akash Siddappa Goundi — Software Engineer focusing on backend architectures, offline AI inference (llama.cpp/GGUF), distributed edge computing, and computer vision." />
     <meta name="keywords" content="Akash Siddappa Goundi, Akash Goundi, Software Engineer, Backend Systems, Edge AI, RVCE, PIHUB, Sol-Bridge, Smart Cart, FastAPI, llama.cpp, Distributed Systems" />
     <meta name="author" content="Akash Siddappa Goundi" />
-    <meta name="theme-color" content="#0B0D0C" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -28,9 +27,30 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Enforce High Contrast Theme & Default to Light Theme -->
+    <script>
+      (function() {
+        try {
+          ['asg_theme', 'asg_theme_v2', 'asg_theme_v3', 'asg_theme_v4', 'asg_theme_mode'].forEach(function(k) {
+            localStorage.removeItem(k);
+          });
+          var userChoice = localStorage.getItem('asg_portfolio_theme');
+          if (userChoice === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.documentElement.style.colorScheme = 'light';
+          }
+        } catch(e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-graphite-900 text-ivory antialiased selection:bg-lime/20 selection:text-lime min-h-screen overflow-x-hidden">
+  <body class="bg-white dark:bg-black text-black dark:text-white antialiased min-h-screen overflow-x-hidden transition-colors duration-200">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

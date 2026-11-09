@@ -251,3 +251,4 @@ def generate_resume(output_path):
 
 if __name__ == '__main__':
     generate_resume('/home/akash/Desktop/PORTFOLIO/public/Akash-Siddappa-Goundi-Resume.pdf')
+

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,47 +8,67 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Dark theme graphite palette
         graphite: {
           950: '#060706',
-          900: '#0B0D0C', // Primary background
-          850: '#101312',
-          800: '#141816', // Card background
-          750: '#1A201D',
-          700: '#232A27', // Border
-          600: '#343E3A',
+          900: '#0B0D0C',
+          850: '#111413',
+          800: '#161B18',
+          750: '#1C221F',
+          700: '#252D29',
+          600: '#353F3A',
         },
+        // Dark theme typography
         ivory: {
-          DEFAULT: '#F4F1E8', // Primary text
+          DEFAULT: '#F4F1E8',
           dim: '#C8C4B7',
           muted: '#8E8B80',
-          subtle: '#58564F',
         },
+        // Technical accents
         lime: {
-          DEFAULT: '#C5F36B', // Electric lime accent
-          hover: '#B5E857',
-          dim: '#8FB838',
+          DEFAULT: '#C5F36B',
+          hover: '#B1E350',
+          dark: '#589A29',
           subtle: 'rgba(197, 243, 107, 0.12)',
           glow: 'rgba(197, 243, 107, 0.25)',
         },
         cyan: {
-          DEFAULT: '#38C7D2', // Muted cyan technical accent
-          muted: '#247D85',
-          subtle: 'rgba(56, 199, 210, 0.12)',
-        }
+          DEFAULT: '#22D3EE',
+          dark: '#0891B2',
+          subtle: 'rgba(34, 211, 238, 0.12)',
+        },
+        accent: {
+          DEFAULT: '#6366F1',
+          soft: '#818CF8',
+          subtle: 'rgba(99, 102, 241, 0.12)',
+        },
+        // Signal orange — primary accent on black/white
+        signal: {
+          DEFAULT: '#FF4D00',
+          bright: '#FF6A26',
+          deep: '#E04400',
+          subtle: 'rgba(255, 77, 0, 0.12)',
+          glow: 'rgba(255, 77, 0, 0.25)',
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['IBM Plex Sans', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+        display: ['Archivo', 'Space Grotesk', 'Inter', 'sans-serif'],
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
+        'fade-up': 'fadeUp 0.5s ease forwards',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-6px)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+        fadeUp: {
+          from: { opacity: '0', transform: 'translateY(16px)' },
+          to:   { opacity: '1', transform: 'translateY(0)' },
         }
       }
     },

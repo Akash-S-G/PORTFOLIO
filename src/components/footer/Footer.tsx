@@ -8,31 +8,31 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="py-12 bg-graphite-950 border-t border-graphite-800 text-ivory-dim">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-graphite-850">
+    <footer className="py-12 bg-white dark:bg-black border-t-2 border-black dark:border-white text-black dark:text-white transition-colors duration-150">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b-2 border-black dark:border-white">
           {/* Left Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-graphite-850 border border-graphite-700 flex items-center justify-center font-mono font-bold text-xs text-lime">
+            <div className="w-8 h-8 rounded-none bg-black dark:bg-white border-2 border-black dark:border-white flex items-center justify-center font-mono font-bold text-xs text-white dark:text-black shadow-xs">
               ASG
             </div>
             <div>
-              <div className="font-display font-semibold text-sm text-ivory">
+              <div className="font-display font-bold text-sm text-black dark:text-white">
                 Akash Siddappa Goundi
               </div>
-              <div className="text-[11px] font-mono text-ivory-muted">
+              <div className="text-[11px] font-mono text-neutral-600 dark:text-neutral-400 font-semibold uppercase">
                 Software Engineering • Backend Systems • Edge AI
               </div>
             </div>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4 text-xs font-mono">
+          <div className="flex items-center gap-4 text-xs font-mono font-bold uppercase">
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-ivory-dim hover:text-lime transition-colors"
+              className="flex items-center gap-1.5 text-black dark:text-white hover:underline transition-colors"
             >
               <Github className="w-4 h-4" />
               <span>GitHub</span>
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
               href={PERSONAL_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-ivory-dim hover:text-cyan transition-colors"
+              className="flex items-center gap-1.5 text-black dark:text-white hover:underline transition-colors"
             >
               <Linkedin className="w-4 h-4" />
               <span>LinkedIn</span>
@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
 
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="flex items-center gap-1.5 text-ivory-dim hover:text-ivory transition-colors"
+              className="flex items-center gap-1.5 text-black dark:text-white hover:underline transition-colors"
             >
               <Mail className="w-4 h-4" />
               <span>Email</span>
@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
             <a
               href={`./${PERSONAL_INFO.resumeFilename}`}
               download={PERSONAL_INFO.resumeFilename}
-              className="flex items-center gap-1.5 text-lime hover:underline transition-all"
+              className="flex items-center gap-1.5 text-black dark:text-white underline underline-offset-4"
             >
               <Download className="w-4 h-4" />
               <span>Resume PDF</span>
@@ -69,23 +69,24 @@ export const Footer: React.FC = () => {
           {/* Scroll to Top */}
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-graphite-900 border border-graphite-750 hover:border-lime/60 text-xs font-mono text-ivory-dim hover:text-lime transition-all"
+            type="button"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black border-2 border-black dark:border-white text-xs font-mono font-bold uppercase transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
             aria-label="Scroll to top of page"
           >
             <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
+            <ArrowUp className="w-3.5 h-3.5 stroke-[2.5]" />
           </button>
         </div>
 
         {/* Bottom Credits & Integrity Disclaimer */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] font-mono text-ivory-muted">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-neutral-600 dark:text-neutral-400 font-semibold uppercase">
           <div>
             <span>© {new Date().getFullYear()} Akash Siddappa Goundi. All rights reserved.</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-lime inline-block" />
-            <span>Audited against verified GitHub repositories & latest resume. Zero fabricated claims.</span>
+            <span className="w-2 h-2 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
+            <span>Audited against verified GitHub repositories &amp; latest resume.</span>
           </div>
         </div>
       </div>

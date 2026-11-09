@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/navigation/Navbar';
 import { Hero } from './components/hero/Hero';
+import { ProfileOverviewSection } from './components/profile/ProfileOverviewSection';
 import { ProjectsSection } from './components/projects/ProjectsSection';
 import { ArchitectureSection } from './components/architecture/ArchitectureSection';
 import { ExperienceSection } from './components/experience/ExperienceSection';
@@ -9,24 +11,11 @@ import { EducationSection } from './components/education/EducationSection';
 import { AboutSection } from './components/about/AboutSection';
 import { ContactSection } from './components/contact/ContactSection';
 import { Footer } from './components/footer/Footer';
+import { ScrollSection } from './components/common/ScrollSection';
 import { RoleFilter } from './types/portfolio';
 
-export const App: React.FC = () => {
+const PortfolioContent: React.FC = () => {
   const [roleFilter, setRoleFilter] = useState<RoleFilter>('all');
-  const [selectedSubsystem, setSelectedSubsystem] = useState<string | null>('edge-ai');
-
-  const handleSelectSubsystem = (id: string) => {
-    setSelectedSubsystem(id);
-    
-    // Auto-align role filter if helpful
-    if (id === 'edge-ai' || id === 'vision') {
-      setRoleFilter('ai-edge');
-    } else if (id === 'gateway') {
-      setRoleFilter('backend');
-    } else if (id === 'iot' || id === 'sync') {
-      setRoleFilter('distributed');
-    }
-  };
 
   const handleSelectProjectFromSkill = (projectId: string) => {
     const el = document.getElementById(`project-${projectId}`);
@@ -36,51 +25,70 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-graphite-900 text-ivory flex flex-col font-sans selection:bg-lime/20 selection:text-lime">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-150">
       {/* Navigation Header */}
       <Navbar
         activeRole={roleFilter}
         onSelectRole={setRoleFilter}
       />
 
-      {/* Main Content Landmark */}
+      {/* Main Content */}
       <main className="flex-1">
-        {/* 1. Hero Section with 3D Systems Scene */}
-        <Hero
-          activeSubsystem={selectedSubsystem}
-          onSelectSubsystem={handleSelectSubsystem}
-        />
+        {/* 1. First Page: Majestic 3D Asset spread entirely across the page */}
+        <Hero />
 
-        {/* 2. Flagship & Featured Projects Section */}
-        <ProjectsSection
-          roleFilter={roleFilter}
-          selectedSubsystem={selectedSubsystem}
-        />
+        {/* 2. Scroll-Revealed Details & Engineering Overview */}
+        <ScrollSection id="overview">
+          <ProfileOverviewSection />
+        </ScrollSection>
 
-        {/* 3. Architecture & Systems Pillars */}
-        <ArchitectureSection />
+        {/* 3. Scroll-Revealed Projects Case Studies */}
+        <ScrollSection id="projects">
+          <ProjectsSection roleFilter={roleFilter} />
+        </ScrollSection>
 
-        {/* 4. Experience Section */}
-        <ExperienceSection />
+        {/* 4. Scroll-Revealed Architecture & Systems Pillars */}
+        <ScrollSection id="architecture">
+          <ArchitectureSection />
+        </ScrollSection>
 
-        {/* 5. Skills Section with Interactive Cross-linking */}
-        <SkillsSection
-          onSelectProject={handleSelectProjectFromSkill}
-        />
+        {/* 5. Scroll-Revealed Industry Experience */}
+        <ScrollSection id="experience">
+          <ExperienceSection />
+        </ScrollSection>
 
-        {/* 6. Education & Achievements */}
-        <EducationSection />
+        {/* 6. Scroll-Revealed Technical Skills */}
+        <ScrollSection id="skills">
+          <SkillsSection onSelectProject={handleSelectProjectFromSkill} />
+        </ScrollSection>
 
-        {/* 7. About Section with Verified Portrait */}
-        <AboutSection />
+        {/* 7. Scroll-Revealed Academic Background & Achievements */}
+        <ScrollSection id="education">
+          <EducationSection />
+        </ScrollSection>
 
-        {/* 8. Contact Section & Direct Recruiter Actions */}
-        <ContactSection />
+        {/* 8. Scroll-Revealed Engineering Perspective / About */}
+        <ScrollSection id="about">
+          <AboutSection />
+        </ScrollSection>
+
+        {/* 9. Scroll-Revealed Contact Channels */}
+        <ScrollSection id="contact">
+          <ContactSection />
+        </ScrollSection>
       </main>
 
       {/* Footer */}
       <Footer />
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <ThemeProvider>
+      <PortfolioContent />
+    </ThemeProvider>
   );
 };
 

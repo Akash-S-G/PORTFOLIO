@@ -506,3 +506,4 @@ export const SystemCoreScene: React.FC<SystemCoreSceneProps> = ({ activeNode, on
     </div>
   );
 };
+

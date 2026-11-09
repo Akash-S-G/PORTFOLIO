@@ -30,30 +30,30 @@ export const ArchitectureSection: React.FC = () => {
       highlight: 'Hypertables & Redis Event Bus'
     },
     {
-      title: 'Probabilistic Anomaly Scoring',
-      project: 'FundShield',
-      projectId: 'fundshield',
-      tech: 'FastAPI • Scikit-learn • OpenCV',
-      summary: 'Applying perceptual hashing and Isolation Forest to flag duplicate images and irregular transaction patterns without making unfounded binary fraud assertions.',
-      highlight: 'Multi-signal Risk Engine'
+      title: 'High-Integrity Verification & Audit Pipelines',
+      project: 'STON Technology',
+      projectId: 'experience',
+      tech: 'Express.js • MongoDB • QR Streams',
+      summary: 'Engineering sub-second QR ticket authentication at venue gates with atomic check-in state, offline retry queuing, and automated multi-drive audit reporting.',
+      highlight: 'Atomic Gate Verification'
     }
   ];
 
   return (
-    <section id="architecture" className="py-20 bg-graphite-950/70 border-t border-graphite-800/80 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="architecture" className="py-20 bg-neutral-50 dark:bg-black border-t-2 border-b-2 border-black dark:border-white relative transition-colors duration-150">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan animate-pulse" />
-            <span className="text-xs font-mono font-semibold text-cyan uppercase tracking-widest">
+            <span className="w-2.5 h-2.5 rounded-none bg-emerald-600 dark:bg-lime inline-block" />
+            <span className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-widest">
               SYSTEMS_DESIGN_PHILOSOPHY // ARCHITECTURAL_PILLARS
             </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-ivory tracking-tight">
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
             How I Think About Systems Architecture
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-ivory-dim max-w-2xl">
+          <p className="mt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-2xl font-medium">
             Across distributed hubs, IoT telemetry, and computer vision, my work follows core backend engineering patterns designed for resilience and predictable performance.
           </p>
         </div>
@@ -66,34 +66,43 @@ export const ArchitectureSection: React.FC = () => {
               <button
                 key={index}
                 onClick={() => setActivePrinciple(index)}
-                className={`p-5 rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between ${
+                type="button"
+                className={`p-5 rounded-none text-left border-2 transition-colors duration-150 flex flex-col justify-between cursor-pointer ${
                   isSelected
-                    ? 'bg-graphite-850 border-lime ring-1 ring-lime/40 shadow-xl'
-                    : 'bg-graphite-900 border-graphite-750 hover:border-graphite-600 hover:bg-graphite-850/60'
+                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]'
+                    : 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900'
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-mono text-lime font-bold uppercase tracking-wider">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider">
                       PILLAR 0{index + 1}
                     </span>
-                    <span className="text-[10px] font-mono text-ivory-muted px-2 py-0.5 rounded bg-graphite-900 border border-graphite-750">
+                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded-none border font-bold uppercase ${
+                      isSelected
+                        ? 'bg-white dark:bg-black text-black dark:text-white border-white dark:border-black'
+                        : 'bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border-black dark:border-white'
+                    }`}>
                       {item.project}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-base font-bold text-ivory mb-2">
+                  <h3 className="font-display text-base font-bold mb-2">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs text-ivory-dim leading-relaxed mb-3">
+                  <p className={`text-xs leading-relaxed mb-3 font-medium ${
+                    isSelected ? 'text-neutral-300 dark:text-neutral-700' : 'text-neutral-700 dark:text-neutral-300'
+                  }`}>
                     {item.summary}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-graphite-800 text-[11px] font-mono text-cyan flex items-center justify-between">
+                <div className={`pt-3 border-t text-[11px] font-mono font-bold uppercase flex items-center justify-between ${
+                  isSelected ? 'border-neutral-700 dark:border-neutral-300' : 'border-neutral-200 dark:border-neutral-800'
+                }`}>
                   <span>{item.highlight}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-lime" />
+                  <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
                 </div>
               </button>
             );
@@ -101,24 +110,24 @@ export const ArchitectureSection: React.FC = () => {
         </div>
 
         {/* Selected Principle Deep Dive Banner */}
-        <div className="p-6 rounded-2xl bg-graphite-900 border border-graphite-700/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="p-6 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-lime uppercase">
+              <span className="text-xs font-mono font-bold text-black dark:text-white uppercase">
                 Active Architecture Focus:
               </span>
-              <span className="text-xs font-mono text-ivory font-semibold">
-                {principles[activePrinciple].title}
+              <span className="text-xs font-mono text-black dark:text-white font-bold uppercase">
+                [{principles[activePrinciple].title}]
               </span>
             </div>
-            <p className="text-xs text-ivory-dim">
-              Verified in <strong className="text-ivory">{principles[activePrinciple].project}</strong> using {principles[activePrinciple].tech}
+            <p className="text-xs text-neutral-700 dark:text-neutral-300 font-medium">
+              Verified in <strong className="text-black dark:text-white font-bold">{principles[activePrinciple].project}</strong> using {principles[activePrinciple].tech}
             </p>
           </div>
 
           <a
-            href={`#project-${principles[activePrinciple].projectId}`}
-            className="px-4 py-2 rounded-xl bg-lime/10 hover:bg-lime hover:text-graphite-950 border border-lime/40 text-lime text-xs font-mono font-semibold transition-all shrink-0"
+            href={principles[activePrinciple].projectId === 'experience' ? '#experience' : `#project-${principles[activePrinciple].projectId}`}
+            className="px-4 py-2 rounded-none bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black text-xs font-mono font-bold uppercase tracking-wider transition-colors shrink-0 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
           >
             Jump to Case Study Flow →
           </a>

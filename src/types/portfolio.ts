@@ -84,3 +84,4 @@ export interface AchievementData {
   proofNote: string;
   link?: string;
 }
+
