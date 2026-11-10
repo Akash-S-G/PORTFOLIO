@@ -11,7 +11,6 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Overview', href: '#overview' },
     { name: 'Work', href: '#projects' },
-    { name: 'Architecture', href: '#architecture' },
     { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
     { name: 'About', href: '#about' },
@@ -22,7 +21,7 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ['contact', 'about', 'skills', 'experience', 'architecture', 'projects', 'overview', 'hero'];
+      const sections = ['contact', 'about', 'skills', 'experience', 'projects', 'overview', 'hero'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {

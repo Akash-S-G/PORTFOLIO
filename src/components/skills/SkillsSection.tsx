@@ -28,7 +28,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onSelectProject })
           <div className="flex items-center gap-2 mb-3">
             <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
             <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
-              COMPETENCIES // EVIDENCE_BASED_TAXONOMY
+              SKILLS
             </span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">

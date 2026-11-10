@@ -85,7 +85,6 @@ export interface AchievementData {
   title: string;
   category: string;
   description: string;
-  proofNote: string;
   link?: string;
 }
 

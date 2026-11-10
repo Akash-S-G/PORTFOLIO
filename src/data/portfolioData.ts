@@ -25,17 +25,18 @@ export const PROJECTS: ProjectData[] = [
     problem: 'Classrooms in bandwidth-constrained or remote regions cannot depend on continuous cloud API access for interactive AI tutoring and large educational multimedia streaming.',
     verifiedContribution: 'Architected FastAPI core services, llama.cpp GGUF inference streaming, model memory cache managers, manifest checksum verification pipelines, and P2P synchronization engines with UDP intranet discovery.',
     teamContext: 'Individual & core backend architectural implementation, documented in the source repository.',
-    technologies: ['FastAPI', 'Python', 'llama.cpp', 'GGUF Models', 'Qdrant', 'Docker', 'Raspberry Pi', 'SQLite', 'UDP Sockets'],
+    technologies: ['FastAPI', 'Python', 'llama.cpp', 'Phi-2 (GGUF)', 'Qdrant', 'Docker', 'Raspberry Pi', 'SQLite', 'UDP Sockets'],
     keyDecisions: [
       'De-coupled heavy LLM inference from edge nodes: Supported splitting heavy compute to a local classroom server while Raspberry Pi acts as the low-power gateway hub.',
-      'Quantized GGUF execution: Utilized 4-bit and 8-bit quantized weights via llama.cpp to run inference locally within strict memory envelopes without GPU accelerators.',
+      'Quantized GGUF execution: Utilized 4-bit and 8-bit quantized weights of the Phi-2 model via llama.cpp to run inference locally within strict memory envelopes without GPU accelerators.',
       'Chunk-resumable sync manifests: Engineered byte-offset resume mechanisms with SHA-256 checksums to survive classroom network drops without restarting multi-gigabyte pack transfers.',
       'Zero-conf UDP beacon discovery: Implemented broadcast beacons on port 47890 allowing student tablets to discover and bind to local PiHub nodes without manual IP configuration.'
     ],
     outcomesAndLimitations: {
       verified: [
         'Over 405 curriculum content pack manifests supported across mathematics, science, and social science.',
-        'Low-latency Server-Sent Events (SSE) token streaming from local GGUF models directly to classroom devices.',
+        'Low-latency Server-Sent Events (SSE) token streaming from local Phi-2 GGUF inference directly to classroom devices.',
+        'Qdrant RAG pipeline evaluated across 50 queries: 90% HitRate@5, 0.746 MRR, 546 ms p95 retrieval latency.',
         'Resilient peer-to-peer synchronization engine with automatic state recovery and retry escalation.',
         'Self-hosted Qdrant vector chunk retrieval for offline curriculum context injection.'
       ],
@@ -54,7 +55,7 @@ export const PROJECTS: ProjectData[] = [
   end
   subgraph SRV["Main Server — AI tier"]
     INF["inference-service :8010"]
-    LL["llama-server :8081 — Q4_K_M · ctx 2048"]
+    LL["llama-server :8081 — Phi-2 GGUF · ctx 2048"]
     CP["content-pipeline :8001"]
     Q[("Qdrant :6333 — educational_chunks")]
   end
@@ -112,10 +113,10 @@ export const PROJECTS: ProjectData[] = [
           sublabel: 'Main Server · llama-server',
           role: 'FastAPI inference service (:8010) on the main server that supervises a llama.cpp llama-server subprocess and streams tutor completions. Heavy AI is deliberately decoupled from the Pi gateway.',
           workflow: [
-            'Spawns llama-server bound to 127.0.0.1:8081 with /models/model.gguf (Q4_K_M quant) and ctx-size 2048 via subprocess.Popen.',
+            'Spawns llama-server bound to 127.0.0.1:8081 with /models/model.gguf — a quantized Phi-2 model (Q4_K_M GGUF) — and ctx-size 2048 via subprocess.Popen.',
             'On POST /ai/tutor: assembles system prompt + RAG context (truncated to a 1800-char budget) + question, then calls the OpenAI-compatible POST /v1/chat/completions (temp 0.4, top_p 0.9, max_tokens 256).',
             'Re-batches upstream SSE tokens into ~120-char events and returns text/event-stream through the gateway to the tablet.',
-            'Keeps a 128-entry LRU prompt cache to avoid re-encoding repeated context; liveness checked via GET /v1/models.'
+            'Keeps the model loaded across requests (no cold reload) plus a 128-entry LRU prompt cache; liveness checked via GET /v1/models.'
           ],
           details: 'Eight content-generator agents share this service and fall back to an Ollama backend when unavailable.',
           category: 'ai-inference'
@@ -129,7 +130,7 @@ export const PROJECTS: ProjectData[] = [
             'content-pipeline (:8001) ingests textbook PDFs → chunks → embeds with BAAI/bge-small-en-v1.5 (CPU) → upserts into the Qdrant educational_chunks collection (:6333).',
             'On each tutor query, the inference service POSTs to content-pipeline /rag/search for top-k chunks filtered by grade/subject/chapter payload.',
             'Retrieved text is truncated to the 1800-char context budget and prepended to the tutor prompt before generation.',
-            'A second collection (enrichment_resources) backs generated flashcards and summary lookups.'
+            'Pipeline evaluated across 50 queries: 90% HitRate@5, 0.746 MRR, and 546 ms p95 retrieval latency.'
           ],
           details: 'Qdrant, content-pipeline, and inference-service all run on the main server (docker-compose.server.yml).',
           category: 'edge-sync'
@@ -178,6 +179,7 @@ export const PROJECTS: ProjectData[] = [
     outcomesAndLimitations: {
       verified: [
         'Complete end-to-end checkout flow operational: Scan -> Detect -> Cart update -> Coupon validation -> Stock decrement -> PDF receipt.',
+        'Detection pipeline evaluated at 94.2% accuracy with 78 ms median inference latency on the evaluated image dataset.',
         'WebSocket broadcast tested under concurrent client connections.',
         'Tuned YOLO11n on custom product datasets with Grounding DINO integration.'
       ],
@@ -251,6 +253,7 @@ export const PROJECTS: ProjectData[] = [
             'Remote tier: YOLO11n + EasyOCR return {bounding_box, confidence, ocr_text, class_id} per detection from the microservice.',
             'Local tier: Grounding DINO-tiny (box/text threshold 0.25) with prompts like "grocery item", "bottle", "milk carton"; YOLO11n takes over when DINO returns nothing (conf 0.35, IoU 0.45, max_det 12, img 640).',
             'Each detection is cropped and passed through EasyOCR (min conf 0.4), then RapidFuzz WRatio matching (threshold 65) against the product catalog resolves the exact SKU.',
+            'Evaluated at 94.2% accuracy on the image dataset with 78 ms median inference latency.',
             'Scanner tuning: confidence raised from 0.50 → 0.35 and max detections capped at 12 to eliminate false clutter in retail bins.'
           ],
           details: 'yolo11n.pt weights custom-trained on curated datasets built by the vision-dataset-factory pipeline.',
@@ -314,7 +317,8 @@ export const PROJECTS: ProjectData[] = [
       verified: [
         'Containerized multi-service setup (PostgreSQL, TimescaleDB, Redis, MQTT broker) running via Docker Compose.',
         'Working API endpoints for user authentication, profile management, and sensor data ingestion.',
-        'High-density time-series tables structured for energy meter telemetry.'
+        'High-density time-series tables structured for energy meter telemetry.',
+        'Benchmarked 150 req/s throughput with 250 ms p95 latency; ML client hardened with retries, exponential backoff, and a circuit breaker.'
       ],
       limitations: [
         'Automated billing, dynamic pricing ML models, and third-party payment gateways (Razorpay/Twilio) are documented architectural targets and not yet fully production-deployed.',
@@ -345,7 +349,7 @@ export const PROJECTS: ProjectData[] = [
       description: 'ESP32 meter readings through MQTT/HTTP ingestion into TimescaleDB hypertables, Redis Pub/Sub fan-out, and marketplace settlement workflows.',
       mermaid: `flowchart LR
   ESP["ESP32 Meter Node"] -->|"HTTP POST /api/v1/iot/ingest"| API["Express :3000 · Socket.io"]
-  ESP -->|"MQTT solar/{device}/data · QoS 1"| MQ["Mosquitto :1883"]
+  ESP -->|"MQTT solar/deviceId/data · QoS 1"| MQ["Mosquitto :1883"]
   MQ -->|"subscribe solar/+/data"| API
   API -->|"hypertable INSERT · 1-week chunks"| TS[("TimescaleDB — energy_readings")]
   API -->|"PUBLISH per-user event channels"| RD["Redis 7 Pub/Sub"]
@@ -387,9 +391,10 @@ export const PROJECTS: ProjectData[] = [
             'Ingestion path (MQTT subscription or HTTP POST) validates and enriches each reading with device_id, timestamp, and measurements.',
             'Persists the reading to TimescaleDB, then publishes the enriched event to the Redis channel events:{eventType}:{user_id} (e.g. events:new_energy_data:{user_id}).',
             'Anomaly checks run after publish; dashboards consume live data via Socket.io while the mobile app polls REST through TanStack Query.',
-            'Settlement enforces the revenue split in TransactionService: 45% host / 20% platform / 35% investors, written to investor_allocations.'
+            'Settlement enforces the revenue split in TransactionService: 45% host / 20% platform / 35% investors, written to investor_allocations.',
+            'Dedicated ML service (solbridge-ai :8001, XGBoost) called for forecasting and energy matching with retries, exponential backoff, and a circuit breaker.'
           ],
-          details: 'JWT auth with access + refresh tokens, bcryptjs hashing, email verification, Razorpay webhook at /payment.',
+          details: 'JWT auth with access + refresh tokens, bcryptjs hashing, email verification, Razorpay webhook at /payment. Benchmarked at 150 req/s with 250 ms p95 latency.',
           category: 'gateway'
         },
         {
@@ -512,7 +517,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     category: 'CS Fundamentals',
     description: 'Core computer science principles guiding design and problem solving.',
     skills: [
-      { name: 'Data Structures & Algorithms', verifiedUse: '300+ competitive problems solved across LeetCode and Codeforces', relatedProjects: [] },
+      { name: 'Data Structures & Algorithms', verifiedUse: '450+ competitive problems solved across LeetCode and Codeforces', relatedProjects: [] },
       { name: 'System Design', verifiedUse: 'Microservice decoupling, edge caching, and fault-tolerant sync architectures', relatedProjects: ['pihub', 'sol-bridge'] },
       { name: 'Operating Systems', verifiedUse: 'Process lifecycle, memory limits, socket networking, concurrency', relatedProjects: ['pihub'] },
       { name: 'Database Management (DBMS)', verifiedUse: 'Schema normalization, indexing, transaction isolation, time-series partitioning', relatedProjects: ['sol-bridge', 'smart-cart'] },
@@ -546,16 +551,14 @@ export const EDUCATION: EducationData[] = [
 
 export const ACHIEVEMENTS: AchievementData[] = [
   {
-    title: '300+ Problems Solved Across LeetCode & Codeforces',
-    category: 'Algorithmic Problem Solving',
-    description: 'Continuous focus on data structures, algorithmic efficiency, graph traversal, dynamic programming, and binary search patterns.',
-    proofNote: 'Self-reported from resume record.'
-  },
-  {
     title: 'Winner — Technical Quiz Challenge',
     category: 'Competitive CS Knowledge',
     description: 'Secured First Place at the inter-collegiate Technical Quiz Challenge held at Nagarjuna College, demonstrating depth across computing fundamentals.',
-    proofNote: 'Achievement from academic resume.'
+  },
+  {
+    title: 'Winner — Tech Arena Event',
+    category: 'Competitive CS Knowledge',
+    description: 'Secured First Place at the Tech Arena event conducted at KLE Society Degree College, Nagarbhavi.',
   }
 ];
 

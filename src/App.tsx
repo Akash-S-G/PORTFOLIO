@@ -5,7 +5,6 @@ import { Navbar } from './components/navigation/Navbar';
 import { Hero } from './components/hero/Hero';
 import { ProfileOverviewSection } from './components/profile/ProfileOverviewSection';
 import { ProjectsSection } from './components/projects/ProjectsSection';
-import { ArchitectureSection } from './components/architecture/ArchitectureSection';
 import { ExperienceSection } from './components/experience/ExperienceSection';
 import { SkillsSection } from './components/skills/SkillsSection';
 import { EducationSection } from './components/education/EducationSection';
@@ -14,7 +13,7 @@ import { ContactSection } from './components/contact/ContactSection';
 import { Footer } from './components/footer/Footer';
 import { ScrollSection } from './components/common/ScrollSection';
 
-const KNOWN_SECTIONS = ['hero', 'overview', 'projects', 'architecture', 'experience', 'skills', 'education', 'about', 'contact'];
+const KNOWN_SECTIONS = ['hero', 'overview', 'projects', 'experience', 'skills', 'education', 'about', 'contact'];
 
 // Normalizes invalid routes to the homepage, mapping `/projects`-style paths
 // onto `#projects` anchors when the segment matches a real section.
@@ -69,12 +68,7 @@ const PortfolioContent: React.FC = () => {
           <ProjectsSection roleFilter={'all'} />
         </ScrollSection>
 
-        {/* 4. Scroll-Revealed Architecture & Systems Pillars */}
-        <ScrollSection id="architecture" variant="left">
-          <ArchitectureSection />
-        </ScrollSection>
-
-        {/* 5. Scroll-Revealed Industry Experience */}
+        {/* 4. Scroll-Revealed Industry Experience */}
         <ScrollSection id="experience" variant="right">
           <ExperienceSection />
         </ScrollSection>

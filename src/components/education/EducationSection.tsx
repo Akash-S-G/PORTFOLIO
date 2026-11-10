@@ -1,6 +1,6 @@
 import React from 'react';
 import { EDUCATION, ACHIEVEMENTS } from '../../data/portfolioData';
-import { GraduationCap, Trophy, Code2 } from 'lucide-react';
+import { GraduationCap, Trophy } from 'lucide-react';
 import { RevealStagger, RevealItem } from '../common/Reveal';
 
 export const EducationSection: React.FC = () => {
@@ -13,11 +13,11 @@ export const EducationSection: React.FC = () => {
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
               <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
-                ACADEMIC_BACKGROUND
+                EDUCATION
               </span>
             </div>
             <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-8">
-              Education &amp; Academic Rigor
+              Education &amp; Academics
             </h2>
 
             <RevealStagger className="space-y-6">
@@ -72,19 +72,15 @@ export const EducationSection: React.FC = () => {
             </h2>
 
             <RevealStagger className="space-y-6">
-              {ACHIEVEMENTS.map((ach, idx) => (
+              {ACHIEVEMENTS.map((ach) => (
                 <RevealItem
-                  key={idx}
+                  key={ach.title}
                   variant="right"
                   className="p-6 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] transition-colors flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      {idx === 0 ? (
-                        <Code2 className="w-4 h-4" />
-                      ) : (
-                        <Trophy className="w-4 h-4" />
-                      )}
+                      <Trophy className="w-4 h-4" />
                       <span className="text-xs font-mono text-black dark:text-white font-bold uppercase tracking-wider">
                         {ach.category}
                       </span>
@@ -98,23 +94,8 @@ export const EducationSection: React.FC = () => {
                       {ach.description}
                     </p>
                   </div>
-
-                  <div className="pt-3 border-t-2 border-black dark:border-white text-[11px] font-mono text-neutral-600 dark:text-neutral-400 uppercase font-bold flex items-center justify-between">
-                    <span>{ach.proofNote}</span>
-                  </div>
                 </RevealItem>
               ))}
-
-              {/* Engineering Mindset Card */}
-              <RevealItem variant="scale" className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
-                <div className="font-mono text-xs font-bold text-black dark:text-white uppercase tracking-wide mb-1 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-none bg-black dark:bg-white inline-block" />
-                  Technical Core Philosophy
-                </div>
-                <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">
-                  &ldquo;Build practical backend systems that operate dependably under real-world hardware limits, intermittent networks, and non-ideal conditions.&rdquo;
-                </p>
-              </RevealItem>
             </RevealStagger>
           </div>
         </div>

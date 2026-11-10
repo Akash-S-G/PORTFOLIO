@@ -22,7 +22,7 @@ export const AboutSection: React.FC = () => {
                 <div className="p-4 bg-black text-white border-t-2 border-black dark:border-white">
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
-                      Akash Gandu Siddappa Goundi
+                      Akash  Siddappa Goundi
                     </span>
                     <span className="w-2 h-2 rounded-none bg-emerald-400 dark:bg-lime inline-block" />
                   </div>
@@ -46,7 +46,7 @@ export const AboutSection: React.FC = () => {
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
               <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
-                ENGINEERING_PERSPECTIVE // PROFILE
+                ABOUT
               </span>
             </div>
 

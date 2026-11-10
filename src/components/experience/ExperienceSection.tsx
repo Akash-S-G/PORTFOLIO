@@ -12,7 +12,7 @@ export const ExperienceSection: React.FC = () => {
           <div className="flex items-center gap-2 mb-3">
             <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
             <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
-              INDUSTRY_EXPERIENCE // SOFTWARE_ENGINEERING_INTERNSHIP
+              INTERNSHIP
             </span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
@@ -60,36 +60,66 @@ export const ExperienceSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Systems Engineered Callout Cards */}
+              {/* Implemented Workflow Cards (resume-only scope — private repo, no architecture diagrams) */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div className="p-4 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
-                  <div className="flex items-center gap-2 mb-2 text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide">
+                  <div className="flex items-center gap-2 mb-3 text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide">
                     <ShieldCheck className="w-4 h-4 stroke-[2.5]" />
-                    Gate Check-in Pipeline
+                    Gate Check-in Flow
                   </div>
-                  <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">
-                    Camera-based real-time QR scanning and instant admission validation with walk-in candidate registration and MongoDB audit persistence.
-                  </p>
+                  <ol className="space-y-2 border-l-2 border-black dark:border-white pl-3">
+                    {[
+                      'Candidates pre-whitelisted via CSV upload — the roster defines the valid cohort per drive.',
+                      'Camera at the gate scans the QR admit card; the claim is validated against the whitelisted cohort in MongoDB.',
+                      'Walk-in candidates are registered on the spot through a fallback path — nobody is turned away for a missing pre-registration.',
+                      'Attendance persists with timestamps, keeping live drive state accurate as people pass the gate.'
+                    ].map((step, i) => (
+                      <li key={i} className="flex items-start gap-2 text-[11px] leading-snug text-neutral-800 dark:text-neutral-200 font-medium">
+                        <span className="shrink-0 mt-0.5 w-4 h-4 flex items-center justify-center bg-signal text-white font-mono text-[9px] font-bold border border-black dark:border-white">{i + 1}</span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
 
                 <div className="p-4 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
-                  <div className="flex items-center gap-2 mb-2 text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide">
+                  <div className="flex items-center gap-2 mb-3 text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide">
                     <KeyRound className="w-4 h-4 stroke-[2.5]" />
-                    Security &amp; RBAC Architecture
+                    Onboarding &amp; Auth Flow
                   </div>
-                  <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">
-                    Student onboarding via CSV whitelisting, join-code account claiming, Google OAuth, role-based access control, and TOTP 2FA.
-                  </p>
+                  <ol className="space-y-2 border-l-2 border-black dark:border-white pl-3">
+                    {[
+                      'CSV student whitelisting + bulk onboarding seeds pending accounts for an entire placement drive at once.',
+                      'Students claim their accounts using join codes, then link identity through Google OAuth.',
+                      'Role-based access control assigns student / coordinator / admin scopes across the platform.',
+                      'TOTP-based two-factor authentication hardens every login before access is granted.'
+                    ].map((step, i) => (
+                      <li key={i} className="flex items-start gap-2 text-[11px] leading-snug text-neutral-800 dark:text-neutral-200 font-medium">
+                        <span className="shrink-0 mt-0.5 w-4 h-4 flex items-center justify-center bg-signal text-white font-mono text-[9px] font-bold border border-black dark:border-white">{i + 1}</span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
 
                 <div className="p-4 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
-                  <div className="flex items-center gap-2 mb-2 text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide">
+                  <div className="flex items-center gap-2 mb-3 text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide">
                     <FileSpreadsheet className="w-4 h-4 stroke-[2.5]" />
-                    Automated Reporting Engine
+                    Reporting &amp; Audit Flow
                   </div>
-                  <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">
-                    Programmatic generation of multi-drive formatted Excel attendance records with officer verification attribution and edge-case alerts.
-                  </p>
+                  <ol className="space-y-2 border-l-2 border-black dark:border-white pl-3">
+                    {[
+                      'Per-drive attendance data aggregates across students, drives, and sessions.',
+                      'Officer verification attribution is stamped onto each record, forming a complete audit trail.',
+                      'Formatted Excel exports generate programmatically per drive for placement operations.',
+                      'Edge cases — duplicate scans, invalid cards, missing records — trigger notification alerts instead of silent failure.'
+                    ].map((step, i) => (
+                      <li key={i} className="flex items-start gap-2 text-[11px] leading-snug text-neutral-800 dark:text-neutral-200 font-medium">
+                        <span className="shrink-0 mt-0.5 w-4 h-4 flex items-center justify-center bg-signal text-white font-mono text-[9px] font-bold border border-black dark:border-white">{i + 1}</span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
               </div>
 
