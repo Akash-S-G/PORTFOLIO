@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArchitectureNode, ArchitectureConnection } from '../../types/portfolio';
 import { Cpu, Server, Database, Smartphone, RefreshCw, Info } from 'lucide-react';
+import { MermaidFlow } from './MermaidFlow';
 
 interface ArchitectureDiagramProps {
   nodes: ArchitectureNode[];
@@ -48,7 +49,11 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
       </div>
 
       {/* Nodes Grid / Flow Representation */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-5">
+      <div
+        className={`grid grid-cols-2 gap-3 mb-5 ${
+          nodes.length >= 6 ? 'sm:grid-cols-3 lg:grid-cols-6' : 'sm:grid-cols-3 lg:grid-cols-5'
+        }`}
+      >
         {nodes.map((node, index) => {
           const isSelected = selectedNodeId === node.id;
           const Icon = getCategoryIcon(node.category);
@@ -184,6 +189,11 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
               <span className="w-1.5 h-1.5 rounded-none bg-black dark:bg-white inline-block" />
               <span>Specification: {selectedNode.details}</span>
             </div>
+            {selectedNode.stepDiagram && (
+              <div className="mt-3">
+                <MermaidFlow chart={selectedNode.stepDiagram} id={`step-${selectedNode.id}`} scrollableY />
+              </div>
+            )}
           </div>
         </div>
       )}

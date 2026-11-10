@@ -186,7 +186,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                 title="PIHUB Edge Inference & Content Distribution Lifecycle"
               />
               {flagship.architectureFlow.mermaid && (
-                <MermaidFlow chart={flagship.architectureFlow.mermaid} id="pihub" />
+                <MermaidFlow chart={flagship.architectureFlow.mermaid} tabs={flagship.architectureFlow.mermaidTabs} id="pihub" />
               )}
               <p className="text-xs text-neutral-600 dark:text-neutral-400 font-mono font-medium">
                 System topology: Two-node LAN — Raspberry Pi gateway tier (nginx, routing, packs) + main server AI tier (llama.cpp, Qdrant RAG). No cloud dependency.

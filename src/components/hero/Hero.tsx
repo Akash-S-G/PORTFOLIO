@@ -35,14 +35,12 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="lg:col-span-6 flex flex-col space-y-6 order-2 lg:order-1"
           >
-            {/* Status Rectangle */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] w-fit max-w-full text-xs font-mono uppercase font-bold flex-wrap">
-              <span className="w-2 h-2 rounded-none bg-signal inline-block animate-blink shrink-0" />
-              <span className="animate-gradient-blink bg-gradient-to-r from-signal via-cyan to-signal bg-clip-text text-transparent">
-                Open to Work
-              </span>
-              <span className="hidden sm:inline text-neutral-400">|</span>
-              <span className="hidden sm:inline">Software Engineering &amp; Backend Roles</span>
+            {/* Status Rectangle — flowing primary/secondary gradient background */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-gradient-to-r from-signal via-cyan-dark dark:via-cyan to-signal animate-gradient-blink border-2 border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] w-fit max-w-full text-xs font-mono uppercase font-bold flex-wrap">
+              <span className="w-2 h-2 rounded-none bg-white inline-block animate-blink shrink-0" />
+              <span className="text-white">Open to Work</span>
+              <span className="hidden sm:inline text-white/70">|</span>
+              <span className="hidden sm:inline text-white">Software Engineering &amp; Backend Roles</span>
             </div>
 
             {/* Name & Headline */}

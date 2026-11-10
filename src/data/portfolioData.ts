@@ -47,23 +47,105 @@ export const PROJECTS: ProjectData[] = [
     },
     architectureFlow: {
       description: 'Two-node deployment: Raspberry Pi runs the lightweight classroom tier (nginx, gateway, pack serving); the main server runs the heavy AI tier (llama.cpp inference, Qdrant RAG).',
-      mermaid: `flowchart LR
-  subgraph PI["Classroom LAN — Raspberry Pi tier"]
-    TAB["Student Tablet"] -->|"HTTP / SSE via nginx :80"| GW["FastAPI Gateway :8000"]
-    GW -->|"packs · sync · :8020"| PIHUB["pihub Node (SQLite)"]
-    GW -->|".otpack serving · :8030"| PACK["pack-service"]
-  end
-  subgraph SRV["Main Server — AI tier"]
-    INF["inference-service :8010"]
-    LL["llama-server :8081 — Phi-2 GGUF · ctx 2048"]
-    CP["content-pipeline :8001"]
-    Q[("Qdrant :6333 — educational_chunks")]
-  end
-  GW -->|"HTTP :8010 · SSE proxy"| INF
-  INF -->|"/v1/chat/completions"| LL
-  INF -->|"/rag/search top-k"| CP
-  CP -->|"embed bge-small · vector I/O"| Q
-  PACK -.->|"NFS v4 mounts (ro)"| Q`,
+      mermaid: `flowchart TB
+    subgraph Classroom["CLASSROOM — Local Network"]
+        T["Student Tablets / Teacher Dashboard"]
+        WIFI["Classroom Wi-Fi / Access Point"]
+        N["Nginx Reverse Proxy :80"]
+        G["FastAPI Gateway :8000"]
+        PN["PIHUB Node :8020"]
+        PS["Pack Service :8030"]
+        ES["Experiment Service :8040"]
+        VS["Voice Service :8050"]
+        SQLITE[("SQLite — Classroom State")]
+
+        T --> WIFI --> N --> G
+        G --> PN
+        G --> PS
+        G --> ES
+        G --> VS
+        PN --> SQLITE
+    end
+
+    subgraph MainServer["MAIN SERVER — Heavy Processing"]
+        CP["Content Pipeline :8001"]
+        INF["Inference Service :8010"]
+        Q[("Qdrant Vector Database")]
+        L["llama.cpp / GGUF Model Runtime"]
+        MEDIA[("MongoDB Media Metadata")]
+        STORAGE[("Shared Storage / NFS")]
+
+        INF --> CP
+        CP --> Q
+        INF --> L
+        CP --> MEDIA
+        CP --> STORAGE
+        PS --> Q
+        PS --> STORAGE
+    end
+
+    G --> INF
+    PN <--> STORAGE`,
+      mermaidTabs: [
+        { label: 'System Architecture', chart: `flowchart TB
+    subgraph Classroom["CLASSROOM — Local Network"]
+        T["Student Tablets / Teacher Dashboard"]
+        WIFI["Classroom Wi-Fi / Access Point"]
+        N["Nginx Reverse Proxy :80"]
+        G["FastAPI Gateway :8000"]
+        PN["PIHUB Node :8020"]
+        PS["Pack Service :8030"]
+        ES["Experiment Service :8040"]
+        VS["Voice Service :8050"]
+        SQLITE[("SQLite — Classroom State")]
+
+        T --> WIFI --> N --> G
+        G --> PN
+        G --> PS
+        G --> ES
+        G --> VS
+        PN --> SQLITE
+    end
+
+    subgraph MainServer["MAIN SERVER — Heavy Processing"]
+        CP["Content Pipeline :8001"]
+        INF["Inference Service :8010"]
+        Q[("Qdrant Vector Database")]
+        L["llama.cpp / GGUF Model Runtime"]
+        MEDIA[("MongoDB Media Metadata")]
+        STORAGE[("Shared Storage / NFS")]
+
+        INF --> CP
+        CP --> Q
+        INF --> L
+        CP --> MEDIA
+        CP --> STORAGE
+        PS --> Q
+        PS --> STORAGE
+    end
+
+    G --> INF
+    PN <--> STORAGE` },
+        { label: 'Query Flow', chart: `sequenceDiagram
+    actor Student
+    participant Gateway
+    participant Inference
+    participant Content
+    participant Qdrant
+    participant LLM
+
+    Student->>Gateway: Ask question
+    Gateway->>Inference: Forward tutor request
+    Inference->>Content: Request relevant context
+    Content->>Qdrant: Search top-k relevant chunks
+    Qdrant-->>Content: Retrieved textbook passages
+    Content-->>Inference: Return contextual information
+    Inference->>Inference: Construct augmented prompt
+    Inference->>LLM: Generate response
+    LLM-->>Inference: Generated tokens
+    Inference-->>Gateway: Tutor answer
+    Gateway-->>Student: Display answer` }
+      ],
       nodes: [
         {
           id: 'tablet',
@@ -122,6 +204,34 @@ export const PROJECTS: ProjectData[] = [
           category: 'ai-inference'
         },
         {
+          id: 'content_pipeline',
+          label: 'Content Pipeline',
+          sublabel: 'Main Server · :8001',
+          role: 'Offline content factory: extracts and chunks textbook PDFs, embeds them into Qdrant, generates learner artifacts, then hands finished bundles to pack-service.',
+          workflow: [
+            'Extracts textbook PDFs with Docling / PyMuPDF into structured text.',
+            'Chunks content along educational boundaries, embeds each chunk with BAAI/bge-small-en-v1.5, and upserts vectors into the Qdrant educational_chunks collection.',
+            'ArtifactAgent generates summaries, quizzes, and flashcards from the chunked content (Ollama fallback when unavailable).',
+            'Hands artifacts, vector collections, and raw PDFs / PhET simulations to pack-service for .otpack bundling.'
+          ],
+          details: 'Runs on the main server (docker-compose.server.yml) next to Qdrant and inference-service.',
+          category: 'ai-inference' as const,
+          stepDiagram: `flowchart TD
+    A["Textbook PDF"] --> B["Docling / PyMuPDF Extraction"]
+    B --> C["Educational Chunking"]
+    C --> D["BGE-small Embeddings"]
+    D --> E[("Qdrant")]
+    C --> F["ArtifactAgent"]
+    F --> G["Summaries / Quizzes / Flashcards"]
+    G --> H["Pack Service"]
+    E --> H
+    I["PDFs / PhET Simulations"] --> H
+    H --> J[".otpack + Manifest"]
+    J --> K["Shared Storage / NFS"]
+    K --> L["PIHUB Raspberry Pi"]
+    L --> M["Student Tablets"]`
+        },
+        {
           id: 'qdrant_store',
           label: 'Qdrant Vector Chunks',
           sublabel: 'Offline Knowledge · RAG',
@@ -139,7 +249,8 @@ export const PROJECTS: ProjectData[] = [
       connections: [
         { from: 'tablet', to: 'gateway', protocol: 'HTTP / SSE · nginx :80', label: 'Tutor Query / Sync' },
         { from: 'gateway', to: 'llm_core', protocol: 'HTTP :8010 · SSE proxy', label: 'Prompt + RAG Context' },
-        { from: 'llm_core', to: 'qdrant_store', protocol: 'HTTP /rag/search → :6333', label: 'Retrieve Chunks' },
+        { from: 'llm_core', to: 'content_pipeline', protocol: 'HTTP /rag/search → :8001', label: 'Retrieve Chunks' },
+        { from: 'content_pipeline', to: 'qdrant_store', protocol: 'bge-small vectors · :6333', label: 'Upsert & Search' },
         { from: 'gateway', to: 'pack_manager', protocol: 'HTTP :8030 / SQLite', label: 'Manifest & Chunk Transfer' }
       ]
     },
@@ -210,13 +321,97 @@ export const PROJECTS: ProjectData[] = [
     ],
     architectureFlow: {
       description: 'Scanner upload to two-tier vision inference, SKU matching, transactional checkout with atomic stock decrement, and topic-scoped WebSocket broadcasts.',
-      mermaid: `flowchart LR
-  CAM["Scanner UI / Camera"] -->|"multipart POST /ai/detect"| API["FastAPI :8000"]
-  API -->|"httpx 8s → /predict (Modal · HF Space)"| VS["Vision Microservice — YOLO11n + EasyOCR"]
-  API -->|"in-process fallback"| LOC["DINO-tiny → YOLO11n · OCR · RapidFuzz SKU"]
-  API -->|"SQLAlchemy / psycopg"| DB[("PostgreSQL 16 — 24 tables")]
-  API -->|"broadcast"| WS["WebSocket /ws — topics"]
-  WS -.->|"ORDER_CREATED · PAYMENT_VERIFIED"| UI["Shopper & Admin Dashboards"]`,
+      mermaid: `flowchart TB
+    USER["Shopper"]
+    FRONT["React + TypeScript Frontend"]
+    API["FastAPI Backend"]
+    AUTH["JWT Authentication"]
+
+    subgraph Vision["Computer Vision Pipeline"]
+        PRE["OpenCV Preprocessing"]
+        DET["Grounding DINO + SAM2"]
+        YOLO["YOLO Fallback"]
+        OCR["EasyOCR"]
+        MATCH["RapidFuzz Product Matcher"]
+    end
+
+    DB[("PostgreSQL Product Catalog")]
+    CART["Cart Service"]
+    ORDER["Order Service"]
+    PAY["Payment Service"]
+
+    USER --> FRONT --> API
+    API --> AUTH
+    API --> PRE
+    PRE --> DET
+    DET -->|No usable detections| YOLO
+    DET --> OCR
+    YOLO --> OCR
+    OCR --> MATCH
+    MATCH <--> DB
+    MATCH --> API
+    API --> CART
+    CART <--> DB
+    CART --> ORDER
+    ORDER <--> DB
+    ORDER --> PAY`,
+      mermaidTabs: [
+        { label: 'System Architecture', chart: `flowchart TB
+    USER["Shopper"]
+    FRONT["React + TypeScript Frontend"]
+    API["FastAPI Backend"]
+    AUTH["JWT Authentication"]
+
+    subgraph Vision["Computer Vision Pipeline"]
+        PRE["OpenCV Preprocessing"]
+        DET["Grounding DINO + SAM2"]
+        YOLO["YOLO Fallback"]
+        OCR["EasyOCR"]
+        MATCH["RapidFuzz Product Matcher"]
+    end
+
+    DB[("PostgreSQL Product Catalog")]
+    CART["Cart Service"]
+    ORDER["Order Service"]
+    PAY["Payment Service"]
+
+    USER --> FRONT --> API
+    API --> AUTH
+    API --> PRE
+    PRE --> DET
+    DET -->|No usable detections| YOLO
+    DET --> OCR
+    YOLO --> OCR
+    OCR --> MATCH
+    MATCH <--> DB
+    MATCH --> API
+    API --> CART
+    CART <--> DB
+    CART --> ORDER
+    ORDER <--> DB
+    ORDER --> PAY` },
+        { label: 'Query Flow', chart: `sequenceDiagram
+    actor Shopper
+    participant FE as React + TypeScript Frontend
+    participant API as FastAPI Backend
+    participant CV as Vision Pipeline
+    participant DB as PostgreSQL
+    participant WS as WebSocket Hub
+
+    Shopper->>FE: Place item / scan shelf
+    FE->>API: POST /predict (camera frame)
+    API->>CV: OpenCV preprocess + detect
+    CV->>CV: Grounding DINO + SAM2 (YOLO fallback)
+    CV->>CV: EasyOCR label read
+    CV->>CV: RapidFuzz product match
+    CV->>DB: Fetch matched product record
+    DB-->>API: Product, price, stock
+    API-->>FE: Detection + matched product
+    API->>DB: Update cart & inventory
+    API->>WS: Publish INVENTORY_UPDATED
+    WS-->>FE: Broadcast live cart state
+    FE-->>Shopper: Item added to cart` }
+      ],
       nodes: [
         {
           id: 'cam',
@@ -347,14 +542,111 @@ export const PROJECTS: ProjectData[] = [
     ],
     architectureFlow: {
       description: 'ESP32 meter readings through MQTT/HTTP ingestion into TimescaleDB hypertables, Redis Pub/Sub fan-out, and marketplace settlement workflows.',
-      mermaid: `flowchart LR
-  ESP["ESP32 Meter Node"] -->|"HTTP POST /api/v1/iot/ingest"| API["Express :3000 · Socket.io"]
-  ESP -->|"MQTT solar/deviceId/data · QoS 1"| MQ["Mosquitto :1883"]
-  MQ -->|"subscribe solar/+/data"| API
-  API -->|"hypertable INSERT · 1-week chunks"| TS[("TimescaleDB — energy_readings")]
-  API -->|"PUBLISH per-user event channels"| RD["Redis 7 Pub/Sub"]
-  API <-->|"HTTP :8001 · predictions"| AI["solbridge-ai — XGBoost forecast"]
-  APP["Expo App"] -->|"REST polling · TanStack Query"| API`,
+      mermaid: `flowchart TB
+    APP["React Native + Expo"]
+    API["Axios API Client + JWT"]
+    NODE["Node.js / Express Backend"]
+
+    subgraph Modules["Backend Modules"]
+        AUTH["Authentication"]
+        IOT["IoT Service"]
+        MARKET["Marketplace"]
+        MATCH["Matching Service"]
+        PAYMENT["Payment / Transaction"]
+        PRED["Prediction / Analytics"]
+    end
+
+    subgraph Data["Data Infrastructure"]
+        PG[("PostgreSQL")]
+        TS[("TimescaleDB")]
+        REDIS[("Redis")]
+        MQTT["MQTT Broker"]
+    end
+
+    DEVICE["Solar Meter / IoT Device"]
+    ML["Python FastAPI ML Service"]
+    MODELS["LSTM / XGBoost / Random Forest / Gradient Boosting"]
+
+    APP --> API --> NODE
+    NODE --> AUTH
+    NODE --> IOT
+    NODE --> MARKET
+    NODE --> MATCH
+    NODE --> PAYMENT
+    NODE --> PRED
+
+    DEVICE --> MQTT --> IOT
+    AUTH <--> PG
+    MARKET <--> PG
+    PAYMENT <--> PG
+    IOT <--> TS
+    MATCH <--> REDIS
+    MATCH <--> PG
+    PRED <--> ML
+    ML --> MODELS`,
+      mermaidTabs: [
+        { label: 'System Architecture', chart: `flowchart TB
+    APP["React Native + Expo"]
+    API["Axios API Client + JWT"]
+    NODE["Node.js / Express Backend"]
+
+    subgraph Modules["Backend Modules"]
+        AUTH["Authentication"]
+        IOT["IoT Service"]
+        MARKET["Marketplace"]
+        MATCH["Matching Service"]
+        PAYMENT["Payment / Transaction"]
+        PRED["Prediction / Analytics"]
+    end
+
+    subgraph Data["Data Infrastructure"]
+        PG[("PostgreSQL")]
+        TS[("TimescaleDB")]
+        REDIS[("Redis")]
+        MQTT["MQTT Broker"]
+    end
+
+    DEVICE["Solar Meter / IoT Device"]
+    ML["Python FastAPI ML Service"]
+    MODELS["LSTM / XGBoost / Random Forest / Gradient Boosting"]
+
+    APP --> API --> NODE
+    NODE --> AUTH
+    NODE --> IOT
+    NODE --> MARKET
+    NODE --> MATCH
+    NODE --> PAYMENT
+    NODE --> PRED
+
+    DEVICE --> MQTT --> IOT
+    AUTH <--> PG
+    MARKET <--> PG
+    PAYMENT <--> PG
+    IOT <--> TS
+    MATCH <--> REDIS
+    MATCH <--> PG
+    PRED <--> ML
+    ML --> MODELS` },
+        { label: 'Query Flow', chart: `sequenceDiagram
+    actor Device as ESP32 Solar Meter
+    participant MQTT as MQTT Broker
+    participant IOT as IoT Service
+    participant TS as TimescaleDB
+    participant REDIS as Redis Pub/Sub
+    participant API as Express API
+    participant ML as solbridge-ai :8001
+    participant APP as Expo App
+
+    Device->>MQTT: Publish solar/deviceId/data (QoS 1)
+    MQTT->>IOT: Deliver reading (solar/+/data sub)
+    IOT->>TS: INSERT energy_readings (1-week chunks)
+    IOT->>REDIS: PUBLISH events:type:userId
+    REDIS-->>APP: Real-time event push (Socket.io)
+    APP->>API: REST poll (TanStack Query)
+    API->>ML: Forecast request (retries + circuit breaker)
+    ML-->>API: LSTM / XGBoost prediction
+    API-->>APP: Prediction + usage insights` }
+      ],
       nodes: [
         {
           id: 'meter',

@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 
 export type Theme = 'light' | 'dark';
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: (origin?: { x: number; y: number }) => void;
   setTheme: (theme: Theme) => void;
 }
 
@@ -63,8 +64,30 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     applyTheme(theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  const toggleTheme = (origin?: { x: number; y: number }) => {
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    const doc = document as Document & {
+      startViewTransition?: (cb: () => void) => { finished: Promise<void> };
+    };
+
+    /* Realtime whole-page reveal where supported; CSS fallback otherwise.
+       The reveal expands as a circle from the toggle button (default: top-right corner). */
+    if (typeof doc.startViewTransition === 'function') {
+      const root = document.documentElement;
+      const x = origin?.x ?? window.innerWidth - 48;
+      const y = origin?.y ?? 48;
+      root.style.setProperty('--vt-x', `${x}px`);
+      root.style.setProperty('--vt-y', `${y}px`);
+
+      const transition = doc.startViewTransition(() => {
+        flushSync(() => setThemeState(next));
+        applyTheme(next);
+      });
+      root.classList.add('vt-active');
+      transition.finished.finally(() => root.classList.remove('vt-active')).catch(() => {});
+    } else {
+      setThemeState(next);
+    }
   };
 
   const setTheme = (newTheme: Theme) => {

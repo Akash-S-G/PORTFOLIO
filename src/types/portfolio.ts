@@ -8,6 +8,8 @@ export interface ArchitectureNode {
   details: string;
   /** Ordered per-step workflow executed inside this node (rendered as a numbered list) */
   workflow?: string[];
+  /** Mermaid diagram rendered inside the inspector when this step is selected */
+  stepDiagram?: string;
   category: 'client' | 'gateway' | 'ai-inference' | 'storage' | 'edge-sync';
 }
 
@@ -47,6 +49,8 @@ export interface ProjectData {
     description: string;
     /** Mermaid flowchart definition (rendered alongside the interactive step diagram) */
     mermaid?: string;
+    /** Additional toggleable diagrams (sequence charts etc.) rendered with label tabs */
+    mermaidTabs?: { label: string; chart: string }[];
   };
   tradeoffs?: ProjectTradeoff[];
   githubUrl: string;

@@ -46,7 +46,7 @@ export const ProjectDetailTabs: React.FC<ProjectDetailTabsProps> = ({ project })
             title={`${project.title.split('—')[0]} Flow & Request Lifecycle`}
           />
           {project.architectureFlow.mermaid && (
-            <MermaidFlow chart={project.architectureFlow.mermaid} id={project.id} />
+            <MermaidFlow chart={project.architectureFlow.mermaid} tabs={project.architectureFlow.mermaidTabs} id={project.id} />
           )}
         </div>
       )}
