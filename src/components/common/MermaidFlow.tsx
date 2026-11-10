@@ -148,7 +148,7 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id, tabs, scrol
     `px-2.5 py-1 rounded-none text-[9px] font-bold uppercase border-2 transition-colors cursor-pointer ${
       active
         ? 'bg-signal text-white border-signal'
-        : 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan'
+        : 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan'
     }`;
 
   return (
@@ -178,7 +178,7 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id, tabs, scrol
             type="button"
             onClick={() => setFullscreen(true)}
             aria-label="View diagram fullscreen"
-            className="sm:hidden inline-flex items-center gap-1 px-2 py-1.5 rounded-none text-[9px] font-bold uppercase border-2 border-black dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-cyan hover:text-black hover:border-cyan cursor-pointer"
+            className="sm:hidden inline-flex items-center gap-1 px-2 py-1.5 rounded-none text-[9px] font-bold uppercase border-2 border-black dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan cursor-pointer"
           >
             <Maximize2 className="w-3 h-3 stroke-[3]" />
             Full
@@ -215,7 +215,7 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id, tabs, scrol
                   type="button"
                   onClick={() => setFullscreen(false)}
                   aria-label="Close fullscreen diagram"
-                  className="inline-flex items-center justify-center w-11 h-11 -mr-1 rounded-none border-2 border-black dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-cyan hover:text-black hover:border-cyan cursor-pointer"
+                  className="inline-flex items-center justify-center w-11 h-11 -mr-1 rounded-none border-2 border-black dark:border-white bg-white dark:bg-black text-black dark:text-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan cursor-pointer"
                 >
                   <X className="w-4 h-4 stroke-[3]" />
                 </button>

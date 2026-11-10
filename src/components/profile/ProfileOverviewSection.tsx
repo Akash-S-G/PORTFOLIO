@@ -72,7 +72,7 @@ export const ProfileOverviewSection: React.FC = () => {
               <a
                 href={`./${PERSONAL_INFO.resumeFilename}`}
                 download={PERSONAL_INFO.resumeFilename}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-signal text-white hover:bg-cyan hover:text-black hover:border-cyan font-mono text-xs font-bold uppercase tracking-wider border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-signal text-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan font-mono text-xs font-bold uppercase tracking-wider border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Download className="w-4 h-4 stroke-[2.5]" />
                 <span>DOWNLOAD RESUME (PDF)</span>
@@ -84,7 +84,7 @@ export const ProfileOverviewSection: React.FC = () => {
                 href={PERSONAL_INFO.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-3 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-1.5 px-4 py-3 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
               >
                 <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                 <span>GitHub</span>
@@ -94,7 +94,7 @@ export const ProfileOverviewSection: React.FC = () => {
                 href={PERSONAL_INFO.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-3 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-1.5 px-4 py-3 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
               >
                 <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                 <span>LinkedIn</span>
@@ -141,7 +141,7 @@ export const ProfileOverviewSection: React.FC = () => {
             <RevealItem variant="scale">
               <a
                 href="#projects"
-                className="flex items-center justify-between p-4 rounded-none bg-black dark:bg-white hover:bg-cyan hover:text-black hover:border-cyan text-white dark:text-black border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] group"
+                className="flex items-center justify-between p-4 rounded-none bg-black dark:bg-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan text-white dark:text-black border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] group"
               >
                 <span>Explore Codebase Case Studies</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -82,7 +82,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                 href={flagship.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
               >
                 <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                 <span>Source Code</span>
@@ -148,7 +148,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
               className={`px-4 py-2 font-mono text-xs font-bold uppercase transition-colors rounded-none border-2 ${
                 activeTabPIHUB === 'architecture'
                   ? 'bg-signal text-white border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
-                  : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:bg-cyan hover:text-black hover:border-cyan'
+                  : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan'
               }`}
             >
               1. System Architecture Flow
@@ -159,7 +159,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
               className={`px-4 py-2 font-mono text-xs font-bold uppercase transition-colors rounded-none border-2 ${
                 activeTabPIHUB === 'decisions'
                   ? 'bg-signal text-white border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
-                  : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:bg-cyan hover:text-black hover:border-cyan'
+                  : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan'
               }`}
             >
               2. Key Engineering Decisions
@@ -170,7 +170,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
               className={`px-4 py-2 font-mono text-xs font-bold uppercase transition-colors rounded-none border-2 ${
                 activeTabPIHUB === 'tradeoffs'
                   ? 'bg-signal text-white border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
-                  : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:bg-cyan hover:text-black hover:border-cyan'
+                  : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan'
               }`}
             >
               3. Tradeoffs &amp; Honest Limits
@@ -317,7 +317,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                     >
                       <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
                       <span>Repository</span>
@@ -327,7 +327,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                     <button
                       onClick={() => toggleProject(project.id)}
                       type="button"
-                      className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 sm:py-1.5 min-h-[40px] sm:min-h-0 rounded-none bg-signal text-white hover:bg-cyan hover:text-black hover:border-cyan text-[11px] sm:text-xs font-mono font-bold uppercase border-2 border-black dark:border-white transition-colors whitespace-nowrap"
+                      className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 sm:py-1.5 min-h-[40px] sm:min-h-0 rounded-none bg-signal text-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan text-[11px] sm:text-xs font-mono font-bold uppercase border-2 border-black dark:border-white transition-colors whitespace-nowrap"
                       aria-expanded={isExpanded}
                     >
                       <span>{isExpanded ? 'Hide Architecture' : 'View Architecture'}</span>

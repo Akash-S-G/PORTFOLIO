@@ -46,7 +46,7 @@ export const ContactSection: React.FC = () => {
                 <div className="flex flex-wrap items-center gap-3">
                   <a
                     href={`mailto:${PERSONAL_INFO.email}?subject=Engineering%20Opportunity%20Discussion`}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-none bg-signal text-white hover:bg-cyan hover:text-black hover:border-cyan font-mono text-xs font-bold uppercase tracking-wide border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-none bg-signal text-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan font-mono text-xs font-bold uppercase tracking-wide border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5"
                   >
                     <Mail className="w-4 h-4 stroke-[2.5]" />
                     <span>SEND EMAIL</span>
@@ -102,7 +102,7 @@ export const ContactSection: React.FC = () => {
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-none bg-white dark:bg-black border border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan transition-colors shadow-xs"
+                  className="flex items-center justify-between p-3 rounded-none bg-white dark:bg-black border border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan transition-colors shadow-xs"
                 >
                   <div className="flex items-center gap-2.5">
                     <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
@@ -121,7 +121,7 @@ export const ContactSection: React.FC = () => {
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-none bg-white dark:bg-black border border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan transition-colors shadow-xs"
+                  className="flex items-center justify-between p-3 rounded-none bg-white dark:bg-black border border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan dark:hover:bg-cyan dark:hover:text-black dark:hover:border-cyan transition-colors shadow-xs"
                 >
                   <div className="flex items-center gap-2.5">
                     <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
