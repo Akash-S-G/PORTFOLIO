@@ -12,7 +12,7 @@ interface PortraitMeshProps {
 const PortraitMesh: React.FC<PortraitMeshProps> = ({ pointer, isDark }) => {
   const groupRef = useRef<THREE.Group>(null);
   const ringRef = useRef<THREE.Mesh>(null);
-  const texture = useTexture('/akash-portrait.jpg');
+  const texture = useTexture('/akash-portrait.png');
 
   texture.generateMipmaps = true;
   texture.minFilter = THREE.LinearMipmapLinearFilter;
@@ -97,7 +97,7 @@ const PortraitMesh: React.FC<PortraitMeshProps> = ({ pointer, isDark }) => {
 const ImageFallback: React.FC = () => (
   <div className="w-full h-full rounded-full overflow-hidden border-4 border-slate-200 dark:border-graphite-700 shadow-2xl">
     <img
-      src="./akash-portrait.jpg"
+      src="./akash-portrait.png"
       alt="Akash Siddappa Goundi"
       className="w-full h-full object-cover object-top"
     />

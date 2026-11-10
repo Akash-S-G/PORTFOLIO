@@ -16,7 +16,7 @@ const SpatialPortraitCard: React.FC<MonolithProps> = ({ pointer, isDark }) => {
   const ring2Ref = useRef<THREE.Mesh>(null);
 
   // Load high-resolution portrait texture
-  const texture = useTexture('/akash-portrait.jpg');
+  const texture = useTexture('/akash-portrait.png');
   texture.generateMipmaps = true;
   texture.minFilter = THREE.LinearMipmapLinearFilter;
   texture.magFilter = THREE.LinearFilter;
@@ -111,7 +111,7 @@ const SpatialPortraitCard: React.FC<MonolithProps> = ({ pointer, isDark }) => {
 const FallbackImage: React.FC = () => (
   <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-200 dark:border-graphite-700">
     <img
-      src="./akash-portrait.jpg"
+      src="./akash-portrait.png"
       alt="Akash Siddappa Goundi"
       className="w-full h-full object-cover"
     />

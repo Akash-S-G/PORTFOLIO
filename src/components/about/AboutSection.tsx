@@ -14,7 +14,7 @@ export const AboutSection: React.FC = () => {
               {/* Main Image Container */}
               <div className="relative rounded-none overflow-hidden bg-white dark:bg-black border-2 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
                 <img
-                  src="./akash-portrait.jpg"
+                  src="./akash-portrait.png"
                   alt="Akash Siddappa Goundi"
                   className="w-full h-auto aspect-square object-cover object-top"
                   loading="lazy"
