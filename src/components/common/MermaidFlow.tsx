@@ -19,7 +19,7 @@ interface MermaidFlowProps {
 
 type MermaidModule = typeof import('mermaid').default;
 
-const mermaidConfig = (theme: string, isSequence: boolean) => ({
+const mermaidConfig = (theme: string) => ({
   startOnLoad: false,
   securityLevel: 'loose' as const,
   theme: 'base' as const,
@@ -39,9 +39,6 @@ const mermaidConfig = (theme: string, isSequence: boolean) => ({
     fontSize: '13px',
   },
   flowchart: { curve: 'linear' as const, htmlLabels: true, padding: 8 },
-  /* Flowcharts scale to fit the host; sequence diagrams render at natural pixel
-     size (pan instead of squeeze) — width-fitting wide sequences shrinks text. */
-  sequence: { useMaxWidth: !isSequence },
 });
 
 /* Serialize initialize+render as one atomic unit — concurrent calls on the shared
@@ -49,12 +46,11 @@ const mermaidConfig = (theme: string, isSequence: boolean) => ({
 let queue: Promise<unknown> = Promise.resolve();
 let initializedKey: string | null = null;
 
-const renderChart = (mermaid: MermaidModule, id: string, chart: string, theme: string, isSequence: boolean) => {
+const renderChart = (mermaid: MermaidModule, id: string, chart: string, theme: string) => {
   const run = queue.then(async () => {
-    const key = `${theme}:${isSequence}`;
-    if (initializedKey !== key) {
-      mermaid.initialize(mermaidConfig(theme, isSequence));
-      initializedKey = key;
+    if (initializedKey !== theme) {
+      mermaid.initialize(mermaidConfig(theme));
+      initializedKey = theme;
     }
     return mermaid.render(`mermaid-${id}`, chart);
   });
@@ -104,7 +100,6 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id, tabs, scrol
   const [fullscreen, setFullscreen] = useState<boolean>(false);
   const activeChart = tabs && tabs.length > 0 ? tabs[Math.min(activeTab, tabs.length - 1)].chart : chart;
   const renderId = tabs && tabs.length > 0 ? `${id}-${activeTab}` : id;
-  const isSequence = !!activeChart && activeChart.trimStart().startsWith('sequenceDiagram');
 
   useEffect(() => {
     let cancelled = false;
@@ -118,7 +113,7 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id, tabs, scrol
         await waitForThemeTransition();
         if (cancelled) return;
         const mermaid = (await import('mermaid')).default;
-        const { svg: rendered } = await withTimeout(renderChart(mermaid, renderId, activeChart, theme, isSequence), 10000);
+        const { svg: rendered } = await withTimeout(renderChart(mermaid, renderId, activeChart, theme), 10000);
         if (!cancelled) setSvg(rendered);
       } catch (e) {
         console.warn(`Diagram render failed for "${renderId}":`, e);
@@ -130,7 +125,7 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id, tabs, scrol
     return () => {
       cancelled = true;
     };
-  }, [activeChart, renderId, theme, isSequence]);
+  }, [activeChart, renderId, theme]);
 
   /* Fullscreen lock + Escape handling while the expanded viewer is open */
   useEffect(() => {
@@ -196,21 +191,12 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id, tabs, scrol
       <div
         className={`mermaid-host overflow-x-auto ${scrollableY ? 'max-h-[460px] overflow-y-auto' : ''}`}
       >
-        {isSequence ? (
-          <div className="w-max mx-auto p-2">
-            <div
-              className="[&_svg]:h-auto"
-              dangerouslySetInnerHTML={{ __html: svg }}
-            />
-          </div>
-        ) : (
-          <div className="min-w-[720px] sm:min-w-0">
-            <div
-              className="flex justify-center [&_svg]:w-full [&_svg]:max-w-none [&_svg]:h-auto"
-              dangerouslySetInnerHTML={{ __html: svg }}
-            />
-          </div>
-        )}
+        <div className="min-w-[720px] sm:min-w-0">
+          <div
+            className="flex justify-center [&_svg]:w-full [&_svg]:max-w-none [&_svg]:h-auto"
+            dangerouslySetInnerHTML={{ __html: svg }}
+          />
+        </div>
       </div>
       {fullscreen &&
         createPortal(
@@ -254,21 +240,12 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id, tabs, scrol
               className="flex-1 overflow-auto"
               style={{ touchAction: 'pan-x pan-y pinch-zoom' }}
             >
-              {isSequence ? (
-                <div className="w-max mx-auto p-4">
-                  <div
-                    className="[&_svg]:h-auto"
-                    dangerouslySetInnerHTML={{ __html: svg }}
-                  />
-                </div>
-              ) : (
-                <div className="min-w-[900px] min-h-full p-4">
-                  <div
-                    className="flex justify-center [&_svg]:w-full [&_svg]:max-w-none [&_svg]:h-auto"
-                    dangerouslySetInnerHTML={{ __html: svg }}
-                  />
-                </div>
-              )}
+              <div className="min-w-[900px] min-h-full p-4">
+                <div
+                  className="flex justify-center [&_svg]:w-full [&_svg]:max-w-none [&_svg]:h-auto"
+                  dangerouslySetInnerHTML={{ __html: svg }}
+                />
+              </div>
             </div>
           </div>,
           document.body
