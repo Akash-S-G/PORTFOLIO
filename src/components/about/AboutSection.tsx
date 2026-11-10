@@ -59,7 +59,7 @@ export const AboutSection: React.FC = () => {
 
             <div className="space-y-4 text-sm sm:text-base text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">
               <p>
-                I am a software engineering student at <strong className="text-signal font-bold">R V College of Engineering (RVCE)</strong> in Bengaluru, focused on building software systems where backend architectures intersect with artificial intelligence and distributed edge devices.
+                I am an Information Science student at <strong className="text-signal font-bold">R V College of Engineering (RVCE)</strong> in Bengaluru, focused on building software systems where backend architectures intersect with artificial intelligence and distributed edge devices.
               </p>
 
               <p>
