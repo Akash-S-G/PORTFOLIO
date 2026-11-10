@@ -1,5 +1,6 @@
 import React from 'react';
 import { RevealStagger, RevealItem } from '../common/Reveal';
+import { TextReveal } from '../common/Reveal';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -50,9 +51,11 @@ export const AboutSection: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
-              Engineering Practical Systems Beyond the Happy Path
-            </h2>
+            <TextReveal
+              as="h2"
+              text="Engineering Practical Systems Beyond the Happy Path"
+              className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight"
+            />
 
             <div className="space-y-4 text-sm sm:text-base text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">
               <p>

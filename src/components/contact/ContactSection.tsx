@@ -3,6 +3,7 @@ import { PERSONAL_INFO } from '../../data/portfolioData';
 import { Mail, Phone, MapPin, Github, Linkedin, Download, ArrowUpRight } from 'lucide-react';
 import { CopyEmailButton } from '../common/CopyEmailButton';
 import { Reveal } from '../common/Reveal';
+import { TextReveal } from '../common/Reveal';
 
 export const ContactSection: React.FC = () => {
   return (
@@ -15,9 +16,11 @@ export const ContactSection: React.FC = () => {
               <span className="w-2 h-2 rounded-none bg-signal inline-block" />
               <span>COMMUNICATION_CHANNELS</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
-              Let&rsquo;s Connect &amp; Build Together
-            </h2>
+            <TextReveal
+              as="h2"
+              text="Let’s Connect & Build Together"
+              className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight"
+            />
             <p className="mt-3 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-xl mx-auto font-medium">
               Have an engineering opportunity, internship inquiry, or technically interesting problem? I welcome conversations with engineering managers and technical recruiters.
             </p>

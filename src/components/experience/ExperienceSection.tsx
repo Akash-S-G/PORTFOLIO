@@ -2,6 +2,7 @@ import React from 'react';
 import { EXPERIENCE } from '../../data/portfolioData';
 import { Calendar, MapPin, ShieldCheck, FileSpreadsheet, KeyRound } from 'lucide-react';
 import { Reveal } from '../common/Reveal';
+import { TextReveal } from '../common/Reveal';
 
 export const ExperienceSection: React.FC = () => {
   return (
@@ -15,9 +16,11 @@ export const ExperienceSection: React.FC = () => {
               INTERNSHIP
             </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
-            Work Experience &amp; Systems Engineered
-          </h2>
+          <TextReveal
+            as="h2"
+            text="Work Experience & Systems Engineered"
+            className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight"
+          />
           <p className="mt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-2xl font-medium">
             Real-world backend workflows, authentication mechanisms, high-throughput verification pipelines, and operational reliability.
           </p>

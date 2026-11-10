@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 
 type RevealVariant = 'up' | 'down' | 'left' | 'right' | 'scale' | 'fade';
 
@@ -94,5 +94,57 @@ export const RevealItem: React.FC<{ children: React.ReactNode; className?: strin
     >
       {children}
     </motion.div>
+  );
+};
+
+interface TextRevealProps {
+  text: string;
+  as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
+  className?: string;
+  delay?: number;
+  stagger?: number;
+}
+
+/**
+ * Word-rise mask animation: each word rises out of an overflow-hidden mask.
+ * Used for the hero name and all section headings. Collapses to static text
+ * when the user prefers reduced motion.
+ */
+export const TextReveal: React.FC<TextRevealProps> = ({
+  text,
+  as: Tag = 'span',
+  className = '',
+  delay = 0,
+  stagger = 0.06,
+}) => {
+  const reduceMotion = useReducedMotion();
+  const words = text.split(' ');
+
+  if (reduceMotion) {
+    return <Tag className={className}>{text}</Tag>;
+  }
+
+  return (
+    <Tag className={className} aria-label={text}>
+      {words.map((word, i) => (
+        <React.Fragment key={`${word}-${i}`}>
+          <span
+            aria-hidden="true"
+            className="inline-block overflow-hidden align-bottom pb-[0.12em] -mb-[0.12em]"
+          >
+            <motion.span
+              className="inline-block will-change-transform"
+              initial={{ y: '115%' }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, margin: '0px 0px -5% 0px' }}
+              transition={{ duration: 0.6, delay: delay + i * stagger, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {i < words.length - 1 ? ' ' : ''}
+        </React.Fragment>
+      ))}
+    </Tag>
   );
 };

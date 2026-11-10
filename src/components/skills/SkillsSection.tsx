@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SKILL_CATEGORIES, PROJECTS } from '../../data/portfolioData';
 import { ArrowRight } from 'lucide-react';
 import { RevealStagger, RevealItem } from '../common/Reveal';
+import { TextReveal } from '../common/Reveal';
 
 interface SkillsSectionProps {
   onSelectProject?: (projectId: string) => void;
@@ -31,9 +32,11 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onSelectProject })
               SKILLS
             </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
-            Technical Skills &amp; Systems Competencies
-          </h2>
+          <TextReveal
+            as="h2"
+            text="Technical Skills & Systems Competencies"
+            className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight"
+          />
           <p className="mt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-2xl font-medium">
             Represented through codebase evidence and project context, without arbitrary percentages or fabricated progress bars. Click any technology to see where it was applied.
           </p>

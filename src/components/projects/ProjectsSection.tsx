@@ -6,6 +6,7 @@ import { ProjectDetailTabs } from './ProjectDetailTabs';
 import { Github, ExternalLink, ShieldAlert, CheckCircle2, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import { RoleFilter } from '../../types/portfolio';
 import { Reveal } from '../common/Reveal';
+import { TextReveal } from '../common/Reveal';
 
 interface ProjectsSectionProps {
   roleFilter: RoleFilter;
@@ -45,9 +46,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
               PROJECTS
             </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
-            Architected Systems &amp; Working Implementations
-          </h2>
+          <TextReveal
+            as="h2"
+            text="Architected Systems & Working Implementations"
+            className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight"
+          />
           <p className="mt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-2xl font-medium">
             Detailed engineering breakdowns distinguishing implemented source code from future targets.
             Each study highlights real technical decisions, constraints, data flows, and measurable outcomes.
@@ -324,7 +327,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                     <button
                       onClick={() => toggleProject(project.id)}
                       type="button"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-signal text-white hover:bg-signal-deep text-xs font-mono font-bold uppercase border-2 border-black dark:border-white transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-2.5 sm:py-1.5 min-h-[44px] sm:min-h-0 rounded-none bg-signal text-white hover:bg-signal-deep text-xs font-mono font-bold uppercase border-2 border-black dark:border-white transition-colors"
                       aria-expanded={isExpanded}
                     >
                       <span>{isExpanded ? 'Hide Architecture' : 'View Architecture'}</span>

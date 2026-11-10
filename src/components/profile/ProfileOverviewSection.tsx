@@ -3,6 +3,7 @@ import { Download, MapPin, GraduationCap, Github, Linkedin, ArrowRight, Code2, C
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { CopyEmailButton } from '../common/CopyEmailButton';
 import { RevealStagger, RevealItem } from '../common/Reveal';
+import { TextReveal } from '../common/Reveal';
 
 export const ProfileOverviewSection: React.FC = () => {
   return (
@@ -17,9 +18,11 @@ export const ProfileOverviewSection: React.FC = () => {
               PROFILE
             </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
-            Software Engineering &amp; Distributed Systems
-          </h2>
+          <TextReveal
+            as="h2"
+            text="Software Engineering & Distributed Systems"
+            className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight"
+          />
           <p className="mt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-2xl font-medium">
             Connecting backend architectures, machine learning services, and real-world edge hardware with production-grade implementations.
           </p>

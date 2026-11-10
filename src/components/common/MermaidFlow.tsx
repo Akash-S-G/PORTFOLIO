@@ -87,14 +87,23 @@ export const MermaidFlow: React.FC<MermaidFlowProps> = ({ chart, id }) => {
 
   return (
     <div className="rounded-none border-2 border-black dark:border-white bg-white dark:bg-black p-4 transition-colors duration-150">
-      <div className="text-[10px] font-mono text-black dark:text-white uppercase tracking-wider mb-3 font-bold flex items-center gap-2">
-        <span className="w-2 h-2 rounded-none bg-signal inline-block" />
-        Architecture Diagram
+      <div className="text-[10px] font-mono text-black dark:text-white uppercase tracking-wider mb-3 font-bold flex items-center justify-between gap-2">
+        <span className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-none bg-signal inline-block" />
+          Architecture Diagram
+        </span>
+        <span className="sm:hidden text-neutral-500 dark:text-neutral-400 normal-case tracking-normal font-medium">
+          swipe to explore →
+        </span>
       </div>
-      <div
-        className="mermaid-host flex justify-center overflow-x-auto [&_svg]:max-w-full [&_svg]:h-auto"
-        dangerouslySetInnerHTML={{ __html: svg }}
-      />
+      <div className="mermaid-host overflow-x-auto">
+        <div className="min-w-[720px] sm:min-w-0">
+          <div
+            className="flex justify-center [&_svg]:max-w-full [&_svg]:h-auto"
+            dangerouslySetInnerHTML={{ __html: svg }}
+          />
+        </div>
+      </div>
     </div>
   );
 };

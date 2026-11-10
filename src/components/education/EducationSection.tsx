@@ -2,6 +2,7 @@ import React from 'react';
 import { EDUCATION, ACHIEVEMENTS } from '../../data/portfolioData';
 import { GraduationCap, Trophy } from 'lucide-react';
 import { RevealStagger, RevealItem } from '../common/Reveal';
+import { TextReveal } from '../common/Reveal';
 
 export const EducationSection: React.FC = () => {
   return (
@@ -16,9 +17,11 @@ export const EducationSection: React.FC = () => {
                 EDUCATION
               </span>
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-8">
-              Education &amp; Academics
-            </h2>
+            <TextReveal
+              as="h2"
+              text="Education & Academics"
+              className="font-display text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-8"
+            />
 
             <RevealStagger className="space-y-6">
               {EDUCATION.map((edu, idx) => (
@@ -67,9 +70,11 @@ export const EducationSection: React.FC = () => {
                 KEY_ACHIEVEMENTS
               </span>
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-8">
-              Problem Solving &amp; Honors
-            </h2>
+            <TextReveal
+              as="h2"
+              text="Problem Solving & Honors"
+              className="font-display text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-8"
+            />
 
             <RevealStagger className="space-y-6">
               {ACHIEVEMENTS.map((ach) => (
