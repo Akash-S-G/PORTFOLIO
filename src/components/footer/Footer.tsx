@@ -20,6 +20,9 @@ export const Footer: React.FC = () => {
               <div className="font-display font-bold text-sm text-black dark:text-white">
                 Akash Siddappa Goundi
               </div>
+              <div className="text-[11px] font-sans font-semibold text-black dark:text-white tracking-wide">
+                Building intelligent systems. Engineering solutions that matter.
+              </div>
               <div className="text-[11px] font-mono text-neutral-600 dark:text-neutral-400 font-semibold uppercase">
                 Backend Systems • Distributed Services • LLM Integration
               </div>
