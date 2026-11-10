@@ -21,7 +21,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onSelectProject })
   }, [selectedSkill]);
 
   return (
-    <section id="skills" className="py-20 lg:py-28 relative bg-white dark:bg-black transition-colors duration-150">
+    <section className="py-20 lg:py-28 relative bg-white dark:bg-black transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14">
@@ -35,7 +35,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onSelectProject })
             Technical Skills &amp; Systems Competencies
           </h2>
           <p className="mt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-2xl font-medium">
-            Represented through verified codebase evidence and project context, without arbitrary percentages or fabricated progress bars. Click any technology to see where it was applied.
+            Represented through codebase evidence and project context, without arbitrary percentages or fabricated progress bars. Click any technology to see where it was applied.
           </p>
         </div>
 

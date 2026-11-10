@@ -3,7 +3,7 @@ import { RevealStagger, RevealItem } from '../common/Reveal';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-20 lg:py-28 relative overflow-hidden bg-white dark:bg-black transition-colors duration-150">
+    <section className="py-20 lg:py-28 relative overflow-hidden bg-white dark:bg-black transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left: Technical Portrait Viewfinder */}
@@ -22,7 +22,7 @@ export const AboutSection: React.FC = () => {
                 <div className="p-4 bg-black text-white border-t-2 border-black dark:border-white">
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
-                      Akash Siddappa Goundi
+                      Akash Gandu Siddappa Goundi
                     </span>
                     <span className="w-2 h-2 rounded-none bg-emerald-400 dark:bg-lime inline-block" />
                   </div>
@@ -36,7 +36,7 @@ export const AboutSection: React.FC = () => {
               {/* Viewfinder Coordinates */}
               <div className="mt-3 flex items-center justify-between text-[10px] font-mono text-black dark:text-white uppercase font-bold">
                 <span>COORD: 12.9716° N, 77.5946° E</span>
-                <span>STATUS: VERIFIED_ENGINEER</span>
+                    <span>STATUS: ACTIVE</span>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ export const AboutSection: React.FC = () => {
               </p>
 
               <p>
-                Rather than treating AI as an isolated cloud API or speculative research concept, I focus on how machine learning models run within real-world constraints—quantizing models with <code className="text-cyan-dark dark:text-cyan font-mono text-xs px-1.5 py-0.5 rounded-none bg-neutral-100 dark:bg-neutral-900 border border-black dark:border-white font-bold">llama.cpp</code> to execute offline on edge hubs, structuring resumable chunk manifests to survive intermittent classroom networks, and connecting camera vision directly to real-time checkout state.
+                Rather than treating AI as an isolated cloud API or speculative research concept, I focus on how machine learning fits within real-world systems—integrating LLM inference via <code className="text-cyan-dark dark:text-cyan font-mono text-xs px-1.5 py-0.5 rounded-none bg-neutral-100 dark:bg-neutral-900 border border-black dark:border-white font-bold">llama.cpp</code> into services that run on edge hubs, structuring resumable chunk manifests to survive intermittent classroom networks, and connecting camera vision directly to real-time checkout state.
               </p>
 
               <p>
@@ -68,7 +68,7 @@ export const AboutSection: React.FC = () => {
               </p>
 
               <p>
-                I prioritize deep computer science fundamentals, data structures, and algorithmic rigor—having solved over 300 competitive problems across LeetCode and Codeforces. I learn most effectively by designing architectures, writing backend code, profiling bottlenecks, and debugging until systems work predictably under pressure.
+                I prioritize deep computer science fundamentals, data structures, and algorithmic rigor—having solved over 450 competitive problems across LeetCode and Codeforces. I learn most effectively by designing architectures, writing backend code, profiling bottlenecks, and debugging until systems work predictably under pressure.
               </p>
             </div>
 

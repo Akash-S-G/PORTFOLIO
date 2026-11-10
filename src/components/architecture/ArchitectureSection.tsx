@@ -41,7 +41,7 @@ export const ArchitectureSection: React.FC = () => {
   ];
 
   return (
-    <section id="architecture" className="py-20 bg-neutral-50 dark:bg-black relative transition-colors duration-150">
+    <section className="py-20 bg-neutral-50 dark:bg-black relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14">
@@ -123,7 +123,7 @@ export const ArchitectureSection: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-neutral-700 dark:text-neutral-300 font-medium">
-              Verified in <strong className="text-signal font-bold">{principles[activePrinciple].project}</strong> using {principles[activePrinciple].tech}
+              Applied in <strong className="text-signal font-bold">{principles[activePrinciple].project}</strong> using {principles[activePrinciple].tech}
             </p>
           </div>
 

@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
                 Akash Siddappa Goundi
               </div>
               <div className="text-[11px] font-mono text-neutral-600 dark:text-neutral-400 font-semibold uppercase">
-                Software Engineering • Backend Systems • Edge AI
+                Software Engineering • Backend Systems • AI Integration
               </div>
             </div>
           </div>
@@ -78,15 +78,10 @@ export const Footer: React.FC = () => {
           </button>
         </div>
 
-        {/* Bottom Credits & Integrity Disclaimer */}
+        {/* Bottom Credits */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-neutral-600 dark:text-neutral-400 font-semibold uppercase">
           <div>
             <span>© {new Date().getFullYear()} Akash Siddappa Goundi. All rights reserved.</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-none bg-signal inline-block" />
-            <span>Audited against verified GitHub repositories &amp; latest resume.</span>
           </div>
         </div>
       </div>

@@ -43,7 +43,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
           </h4>
         </div>
         <span className="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 uppercase font-bold">
-          [Click any step to inspect node role]
+          [Click any step to inspect its workflow]
         </span>
       </div>
 
@@ -92,27 +92,63 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
         })}
       </div>
 
-      {/* Connection Links Table */}
-      {connections.length > 0 && (
+      {/* Step-Specific Connections */}
+      {selectedNode && (
         <div className="mb-4 bg-neutral-50 dark:bg-neutral-900 rounded-none p-3 border-2 border-black dark:border-white">
           <div className="text-[10px] font-mono text-black dark:text-white uppercase tracking-wider mb-2 font-bold">
-            Inter-Service Data Conduits &amp; Protocols:
+            Data Flow In &amp; Out of {selectedNode.label}:
           </div>
-          <div className="flex flex-wrap gap-2">
-            {connections.map((conn, idx) => (
+          {(() => {
+            const inbound = connections.filter((c) => c.to === selectedNode.id);
+            const outbound = connections.filter((c) => c.from === selectedNode.id);
+            const renderConn = (conn: ArchitectureConnection, dir: 'in' | 'out') => (
               <div
-                key={idx}
+                key={`${dir}-${conn.from}-${conn.to}`}
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-none bg-white dark:bg-black border border-black dark:border-white text-xs font-mono text-black dark:text-white"
               >
-                <span className="font-bold">{conn.from}</span>
-                <span className="font-extrabold">→</span>
-                <span className="font-bold">{conn.to}</span>
+                {dir === 'in' && (
+                  <>
+                    <span className="font-bold">{conn.from}</span>
+                    <span className="font-extrabold text-signal">→</span>
+                    <span className="font-bold text-signal">{selectedNode.label.split(' ')[0]}</span>
+                  </>
+                )}
+                {dir === 'out' && (
+                  <>
+                    <span className="font-bold text-signal">{selectedNode.label.split(' ')[0]}</span>
+                    <span className="font-extrabold text-signal">→</span>
+                    <span className="font-bold">{conn.to}</span>
+                  </>
+                )}
                 <span className="text-[10px] font-bold text-white bg-signal px-1.5 py-0.2 ml-1">
                   {conn.protocol}
                 </span>
               </div>
-            ))}
-          </div>
+            );
+            if (inbound.length === 0 && outbound.length === 0) {
+              return (
+                <div className="text-[11px] font-mono text-neutral-600 dark:text-neutral-400">
+                  Origin / sink step — no internal conduits.
+                </div>
+              );
+            }
+            return (
+              <div className="space-y-1.5">
+                {inbound.length > 0 && (
+                  <div className="flex flex-wrap gap-2 items-center">
+                    <span className="text-[9px] font-mono font-bold text-cyan-dark dark:text-cyan uppercase">In ↓</span>
+                    {inbound.map((c) => renderConn(c, 'in'))}
+                  </div>
+                )}
+                {outbound.length > 0 && (
+                  <div className="flex flex-wrap gap-2 items-center">
+                    <span className="text-[9px] font-mono font-bold text-cyan-dark dark:text-cyan uppercase">Out ↑</span>
+                    {outbound.map((c) => renderConn(c, 'out'))}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
         </div>
       )}
 
@@ -132,6 +168,18 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
               </span>
             </div>
             <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">{selectedNode.role}</p>
+            {selectedNode.workflow && selectedNode.workflow.length > 0 && (
+              <ol className="mt-3 space-y-1.5 border-l-2 border-black dark:border-white pl-3">
+                {selectedNode.workflow.map((step, i) => (
+                  <li key={i} className="flex items-start gap-2 text-[11px] leading-snug text-neutral-800 dark:text-neutral-200 font-medium">
+                    <span className="shrink-0 mt-0.5 w-4 h-4 flex items-center justify-center bg-signal text-white font-mono text-[9px] font-bold border border-black dark:border-white">
+                      {i + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            )}
             <div className="mt-2 text-[11px] font-mono text-black dark:text-white font-bold flex items-center gap-1.5 uppercase">
               <span className="w-1.5 h-1.5 rounded-none bg-black dark:bg-white inline-block" />
               <span>Specification: {selectedNode.details}</span>

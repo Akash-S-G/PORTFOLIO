@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { PROJECTS } from '../../data/portfolioData';
 import { ArchitectureDiagram } from '../common/ArchitectureDiagram';
+import { MermaidFlow } from '../common/MermaidFlow';
+import { ProjectDetailTabs } from './ProjectDetailTabs';
 import { Github, ExternalLink, ShieldAlert, CheckCircle2, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import { RoleFilter } from '../../types/portfolio';
 import { Reveal } from '../common/Reveal';
@@ -33,18 +35,18 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
   };
 
   return (
-    <section id="projects" className="py-20 lg:py-28 relative bg-white dark:bg-black transition-colors duration-150">
+    <section className="py-20 lg:py-28 relative bg-white dark:bg-black transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
             <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
-              ENGINEERING_CASE_STUDIES // VERIFIED_CODEBASES
+              ENGINEERING_CASE_STUDIES // SOURCE_CODEBASES
             </span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
-            Architected Systems &amp; Verified Implementations
+            Architected Systems &amp; Working Implementations
           </h2>
           <p className="mt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-2xl font-medium">
             Detailed engineering breakdowns distinguishing implemented source code from future targets.
@@ -102,17 +104,17 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
           {/* Problem & Contribution Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             <div className="p-4 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
-              <div className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide mb-1.5 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-none bg-black dark:bg-white inline-block" />
+              <div className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-wide mb-1.5 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-none bg-cyan-dark dark:bg-cyan inline-block" />
                 The Core Problem
               </div>
-              <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">{flagship.problem}</p>
+              <p className="text-xs text-cyan-dark dark:text-cyan leading-relaxed font-semibold">{flagship.problem}</p>
             </div>
 
             <div className="p-4 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
               <div className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide mb-1.5 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-none bg-signal inline-block" />
-                Verified Individual Contribution
+                Individual Contribution
               </div>
               <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">{flagship.verifiedContribution}</p>
             </div>
@@ -121,7 +123,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
           {/* Tech Stack Chips */}
           <div className="mb-8">
             <div className="text-xs font-mono text-black dark:text-white uppercase tracking-wider mb-2.5 font-bold">
-              Verified Technology Stack:
+              Technology Stack:
             </div>
             <div className="flex flex-wrap gap-2">
               {flagship.technologies.map((tech) => (
@@ -180,8 +182,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                 connections={flagship.architectureFlow.connections}
                 title="PIHUB Edge Inference & Content Distribution Lifecycle"
               />
+              {flagship.architectureFlow.mermaid && (
+                <MermaidFlow chart={flagship.architectureFlow.mermaid} id="pihub" />
+              )}
               <p className="text-xs text-neutral-600 dark:text-neutral-400 font-mono font-medium">
-                System topology: Client student tablets connect over offline AP hotspot to FastAPI hub with local GGUF models.
+                System topology: Two-node LAN — Raspberry Pi gateway tier (nginx, routing, packs) + main server AI tier (llama.cpp, Qdrant RAG). No cloud dependency.
               </p>
             </div>
           )}
@@ -233,12 +238,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                 ))}
               </div>
 
-              {/* Verified vs Limitations Comparison */}
+              {/* Outcomes vs Limitations Comparison */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t-2 border-black dark:border-white">
                 <div className="p-4 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
                   <div className="flex items-center gap-2 text-xs font-mono font-bold text-black dark:text-white mb-2 uppercase">
                     <CheckCircle2 className="w-4 h-4 stroke-[2.5]" />
-                    Verified Outcomes
+                    Outcomes
                   </div>
                   <ul className="space-y-1.5 text-xs text-neutral-800 dark:text-neutral-200 font-medium">
                     {flagship.outcomesAndLimitations.verified.map((v, i) => (
@@ -336,18 +341,18 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
                   {project.summary}
                 </p>
 
-                {/* Problem vs Verified Contribution */}
+                {/* Problem vs Contribution */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="p-3.5 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
-                    <div className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide mb-1">
+                    <div className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-wide mb-1">
                       Problem Context:
                     </div>
-                    <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">{project.problem}</p>
+                    <p className="text-xs text-cyan-dark dark:text-cyan leading-relaxed font-semibold">{project.problem}</p>
                   </div>
 
                   <div className="p-3.5 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
                     <div className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wide mb-1">
-                      My Verified Individual Contribution:
+                      My Individual Contribution:
                     </div>
                     <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">{project.verifiedContribution}</p>
                   </div>
@@ -367,62 +372,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ roleFilter }) 
 
                 {/* Expandable Architecture & Details */}
                 {isExpanded && (
-                  <div className="pt-6 border-t-2 border-black dark:border-white space-y-6">
-                    <ArchitectureDiagram
-                      nodes={project.architectureFlow.nodes}
-                      connections={project.architectureFlow.connections}
-                      title={`${project.title.split('—')[0]} Flow & Request Lifecycle`}
-                    />
-
-                    {/* Key Decisions */}
-                    <div className="p-4 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
-                      <div className="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wider mb-3">
-                        Key Engineering Decisions &amp; Implementations:
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {project.keyDecisions.map((decision, dIdx) => (
-                          <div key={dIdx} className="flex items-start gap-2">
-                            <span className="text-black dark:text-white text-xs font-mono mt-0.5 font-bold">•</span>
-                            <span className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium">{decision}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Outcomes & Limitations */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-3.5 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
-                        <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-black dark:text-white mb-2 uppercase">
-                          <CheckCircle2 className="w-4 h-4 stroke-[2.5]" />
-                          Verified Functionality
-                        </div>
-                        <ul className="space-y-1 text-xs text-neutral-800 dark:text-neutral-200 font-medium">
-                          {project.outcomesAndLimitations.verified.map((v, i) => (
-                            <li key={i} className="flex items-start gap-1.5">
-                              <span className="text-black dark:text-white font-bold">•</span>
-                              <span>{v}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="p-3.5 rounded-none bg-neutral-50 dark:bg-neutral-900 border-2 border-black dark:border-white">
-                        <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-black dark:text-white mb-2 uppercase">
-                          <ShieldAlert className="w-4 h-4 stroke-[2.5]" />
-                          Documented Limitations &amp; Scope
-                        </div>
-                        <ul className="space-y-1 text-xs text-neutral-800 dark:text-neutral-200 font-medium">
-                          {project.outcomesAndLimitations.limitations.map((l, i) => (
-                            <li key={i} className="flex items-start gap-1.5">
-                              <span className="text-black dark:text-white font-bold">•</span>
-                              <span>{l}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+                  <div className="pt-6 border-t-2 border-black dark:border-white">
+                    <ProjectDetailTabs project={project} />
                   </div>
-                 )}
+                )}
               </Reveal>
             );
           })}

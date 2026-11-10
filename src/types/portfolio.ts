@@ -6,6 +6,8 @@ export interface ArchitectureNode {
   sublabel: string;
   role: string;
   details: string;
+  /** Ordered per-step workflow executed inside this node (rendered as a numbered list) */
+  workflow?: string[];
   category: 'client' | 'gateway' | 'ai-inference' | 'storage' | 'edge-sync';
 }
 
@@ -43,6 +45,8 @@ export interface ProjectData {
     nodes: ArchitectureNode[];
     connections: ArchitectureConnection[];
     description: string;
+    /** Mermaid flowchart definition (rendered alongside the interactive step diagram) */
+    mermaid?: string;
   };
   tradeoffs?: ProjectTradeoff[];
   githubUrl: string;

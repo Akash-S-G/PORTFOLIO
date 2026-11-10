@@ -1,12 +1,12 @@
 import React from 'react';
-import { Download, MapPin, GraduationCap, Github, Linkedin, ArrowRight, Code2, Server, Cpu } from 'lucide-react';
+import { Download, MapPin, GraduationCap, Github, Linkedin, ArrowRight, Code2, Cpu } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { CopyEmailButton } from '../common/CopyEmailButton';
 import { RevealStagger, RevealItem } from '../common/Reveal';
 
 export const ProfileOverviewSection: React.FC = () => {
   return (
-    <section id="overview" className="py-20 lg:py-28 relative bg-white dark:bg-black transition-colors duration-150">
+    <section className="py-20 lg:py-28 relative bg-white dark:bg-black transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -21,7 +21,7 @@ export const ProfileOverviewSection: React.FC = () => {
             Software Engineering &amp; Distributed Systems
           </h2>
           <p className="mt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 max-w-2xl font-medium">
-            Connecting backend architectures, machine learning models, and real-world edge hardware with verified, production-grade implementations.
+            Connecting backend architectures, machine learning services, and real-world edge hardware with production-grade implementations.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export const ProfileOverviewSection: React.FC = () => {
                   I am a software engineering student at <strong className="text-signal font-bold">R V College of Engineering (RVCE)</strong> focused on architecting resilient backend systems where distributed computing intersects with applied artificial intelligence and connected hardware.
                 </p>
                 <p>
-                  My engineering experience spans developing <strong className="text-signal font-bold">FastAPI and Express microservices</strong>, quantizing LLMs for offline edge inference with <strong className="text-signal font-bold">llama.cpp</strong>, designing resumable chunk sync protocols, and building sub-second computer vision checkout pipelines.
+                  My engineering experience spans developing <strong className="text-signal font-bold">FastAPI and Express microservices</strong>, integrating local LLM inference via <strong className="text-signal font-bold">llama.cpp</strong>, designing resumable chunk sync protocols, and building sub-second computer vision checkout pipelines.
                 </p>
               </div>
 
@@ -102,26 +102,10 @@ export const ProfileOverviewSection: React.FC = () => {
           {/* Right Column: Verified Engineering Metrics & Pillars */}
           <RevealStagger className="lg:col-span-5 space-y-4">
 
-            {/* Metric 1: PIHUB Curriculum Distribution */}
+            {/* Metric 1: Competitive Problem Solving */}
             <RevealItem variant="right" className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
               <div className="flex items-center justify-between mb-2">
-                <span className="font-mono text-3xl font-extrabold text-black dark:text-white">405+</span>
-                <span className="p-2 rounded-none bg-signal text-white border border-black dark:border-white">
-                  <Server className="w-5 h-5" />
-                </span>
-              </div>
-              <h4 className="font-mono text-sm font-bold text-black dark:text-white mb-1 uppercase">
-                Offline Curriculum Packs (PIHUB)
-              </h4>
-              <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium">
-                Manifest-based educational distribution architecture supporting byte-offset resumption over unstable classroom wireless networks.
-              </p>
-            </RevealItem>
-
-            {/* Metric 2: Competitive Problem Solving */}
-            <RevealItem variant="right" className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-mono text-3xl font-extrabold text-black dark:text-white">300+</span>
+                <span className="font-mono text-3xl font-extrabold text-black dark:text-white">450+</span>
                 <span className="p-2 rounded-none bg-signal text-white border border-black dark:border-white">
                   <Code2 className="w-5 h-5" />
                 </span>
@@ -134,7 +118,7 @@ export const ProfileOverviewSection: React.FC = () => {
               </p>
             </RevealItem>
 
-            {/* Metric 3: Offline Edge AI Inference */}
+            {/* Metric 2: Offline Edge AI Inference */}
             <RevealItem variant="right" className="p-5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
               <div className="flex items-center justify-between mb-2">
                 <span className="font-mono text-2xl font-extrabold text-black dark:text-white">Offline</span>
@@ -146,7 +130,7 @@ export const ProfileOverviewSection: React.FC = () => {
                 Local LLM Inference Engine
               </h4>
               <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium">
-                Edge deployment of 4-bit/8-bit quantized GGUF models on constrained edge hardware using llama.cpp with token-by-token streaming response pipelines.
+                Local-first LLM inference with llama.cpp and token-by-token streaming, integrated behind backend APIs for offline-capable services.
               </p>
             </RevealItem>
 
@@ -156,7 +140,7 @@ export const ProfileOverviewSection: React.FC = () => {
                 href="#projects"
                 className="flex items-center justify-between p-4 rounded-none bg-black dark:bg-white hover:bg-signal-deep text-white dark:text-black border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] group"
               >
-                <span>Explore Verified Codebase Case Studies</span>
+                <span>Explore Codebase Case Studies</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </RevealItem>

@@ -5,7 +5,7 @@ import { RevealStagger, RevealItem } from '../common/Reveal';
 
 export const EducationSection: React.FC = () => {
   return (
-    <section id="education" className="py-20 bg-neutral-50 dark:bg-black relative transition-colors duration-150">
+    <section className="py-20 bg-neutral-50 dark:bg-black relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left: Education */}
@@ -64,7 +64,7 @@ export const EducationSection: React.FC = () => {
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2.5 h-2.5 rounded-none bg-signal inline-block" />
               <span className="text-xs font-mono font-bold text-cyan-dark dark:text-cyan uppercase tracking-widest">
-                VERIFIED_ACHIEVEMENTS
+                KEY_ACHIEVEMENTS
               </span>
             </div>
             <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-8">

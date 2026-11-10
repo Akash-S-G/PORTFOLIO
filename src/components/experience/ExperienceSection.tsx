@@ -5,7 +5,7 @@ import { Reveal } from '../common/Reveal';
 
 export const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-black relative transition-colors duration-150">
+    <section className="py-20 bg-white dark:bg-black relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12">
@@ -93,7 +93,7 @@ export const ExperienceSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Verified Impact Bullets */}
+              {/* Impact Bullets */}
               <div className="mb-8">
                 <div className="text-xs font-mono uppercase tracking-wider text-black dark:text-white mb-3 font-bold">
                   Detailed Engineering Responsibilities:

@@ -52,13 +52,13 @@ export const Hero: React.FC = () => {
                 Akash Siddappa Goundi
               </h1>
               <p className="mt-3 text-base sm:text-lg font-bold text-black dark:text-white leading-relaxed">
-                I make AI run where the cloud can&rsquo;t — <span className="text-signal">offline, on-device, at the edge</span>.
+                I build dependable backends — <span className="text-signal">and wire LLMs in where they earn their place</span>.
               </p>
             </div>
 
             {/* Subheadline */}
             <p className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-xl">
-              Backend engineer at STON Tech building FastAPI &amp; Express architectures, squeezing quantized LLMs onto edge hardware, and wiring real-time pipelines that don&rsquo;t flinch under bad networks.
+              Backend engineer at STON Tech architecting FastAPI &amp; Express services and real-time pipelines that don&rsquo;t flinch under bad networks — integrating LLMs into production apps, not demos.
             </p>
 
             {/* Quick Credentials */}

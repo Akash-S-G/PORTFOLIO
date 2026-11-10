@@ -6,7 +6,7 @@ import { Reveal } from '../common/Reveal';
 
 export const ContactSection: React.FC = () => {
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-white dark:bg-black relative transition-colors duration-150">
+    <section className="py-20 lg:py-28 bg-white dark:bg-black relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -59,12 +59,12 @@ export const ContactSection: React.FC = () => {
                     className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-black dark:text-white hover:underline underline-offset-4 transition-colors"
                   >
                     <Download className="w-3.5 h-3.5" />
-                    <span>Download latest verified resume (PDF)</span>
+                    <span>Download latest resume (PDF)</span>
                   </a>
                 </div>
               </div>
 
-              {/* Right Column: Verified Coordinates & Profiles */}
+              {/* Right Column: Coordinates & Profiles */}
               <div className="space-y-3 bg-neutral-50 dark:bg-neutral-900 p-6 rounded-none border-2 border-black dark:border-white">
                 {/* Email Item */}
                 <div className="flex items-center justify-between p-3 rounded-none bg-white dark:bg-black border border-black dark:border-white shadow-xs">
