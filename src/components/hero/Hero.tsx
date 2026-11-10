@@ -24,7 +24,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-28 pb-20 lg:pt-32 lg:pb-24 overflow-hidden bg-white dark:bg-black transition-colors duration-150">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-28 pb-20 lg:pt-32 lg:pb-24 overflow-hidden transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 

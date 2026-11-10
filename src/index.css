@@ -16,10 +16,42 @@
     border-radius: 0 !important;
     font-family: 'Outfit', system-ui, -apple-system, sans-serif;
     background-color: #FAF7F1;
+    /* Atmospheric corner gradients painted on the canvas itself: peach light
+       from the top-right, faint cyan from the bottom-left, ivory center.
+       attachment:fixed anchors them to the viewport while scrolling. */
+    background-image:
+      radial-gradient(
+        ellipse 900px 650px at 100% 0%,
+        rgba(240, 156, 106, 0.4),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 1400px 900px at 100% 0%,
+        rgba(243, 181, 143, 0.14),
+        transparent 75%
+      ),
+      radial-gradient(
+        ellipse 700px 550px at 0% 100%,
+        rgba(34, 211, 238, 0.14),
+        transparent 72%
+      );
+    background-attachment: fixed;
   }
 
   html.dark {
     background-color: #181715;
+    background-image:
+      radial-gradient(
+        ellipse 900px 650px at 100% 0%,
+        rgba(255, 77, 0, 0.1),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 700px 550px at 0% 100%,
+        rgba(34, 211, 238, 0.07),
+        transparent 72%
+      );
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -142,66 +174,3 @@
   }
 }
 
-/* Atmospheric corner gradients: warm peach light from the top-right, faint
-   cyan from the bottom-left, ivory center. Fixed, decorative-only layer. */
-.atmosphere-glow {
-  position: fixed;
-  inset: 0;
-  z-index: -10;
-  pointer-events: none;
-  background-image:
-    radial-gradient(
-      ellipse 650px 500px at 100% 0%,
-      rgba(243, 181, 143, 0.22),
-      transparent 75%
-    ),
-    radial-gradient(
-      ellipse 550px 450px at 0% 100%,
-      rgba(34, 211, 238, 0.07),
-      transparent 75%
-    );
-}
-
-html.dark .atmosphere-glow {
-  background-image:
-    radial-gradient(
-      ellipse 650px 500px at 100% 0%,
-      rgba(255, 77, 0, 0.06),
-      transparent 75%
-    ),
-    radial-gradient(
-      ellipse 550px 450px at 0% 100%,
-      rgba(34, 211, 238, 0.04),
-      transparent 75%
-    );
-}
-
-@media (max-width: 767px) {
-  .atmosphere-glow {
-    background-image:
-      radial-gradient(
-        ellipse 420px 320px at 100% 0%,
-        rgba(243, 181, 143, 0.16),
-        transparent 75%
-      ),
-      radial-gradient(
-        ellipse 360px 300px at 0% 100%,
-        rgba(34, 211, 238, 0.05),
-        transparent 75%
-      );
-  }
-
-  html.dark .atmosphere-glow {
-    background-image:
-      radial-gradient(
-        ellipse 420px 320px at 100% 0%,
-        rgba(255, 77, 0, 0.05),
-        transparent 75%
-      ),
-      radial-gradient(
-        ellipse 360px 300px at 0% 100%,
-        rgba(34, 211, 238, 0.035),
-        transparent 75%
-      );
-  }
-}
