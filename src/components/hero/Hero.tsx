@@ -3,7 +3,7 @@ import { ArrowDown, Download, Sparkles, MapPin, GraduationCap } from 'lucide-rea
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { CopyEmailButton } from '../common/CopyEmailButton';
-import { TextReveal } from '../common/Reveal';
+import { AnimatedName } from '../common/Reveal';
 
 export const Hero: React.FC = () => {
   // Interactive photo tilt
@@ -38,7 +38,9 @@ export const Hero: React.FC = () => {
             {/* Status Rectangle */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] w-fit max-w-full text-xs font-mono uppercase font-bold flex-wrap">
               <span className="w-2 h-2 rounded-none bg-signal inline-block animate-blink shrink-0" />
-              <span className="text-signal animate-blink">Open to Work</span>
+              <span className="animate-gradient-blink bg-gradient-to-r from-signal via-cyan to-signal bg-clip-text text-transparent">
+                Open to Work
+              </span>
               <span className="hidden sm:inline text-neutral-400">|</span>
               <span className="hidden sm:inline">Software Engineering &amp; Backend Roles</span>
             </div>
@@ -49,11 +51,8 @@ export const Hero: React.FC = () => {
                 <MapPin className="w-3.5 h-3.5 shrink-0" />
                 <span>Bengaluru, India · R V College of Engineering</span>
               </div>
-              <TextReveal
-                as="h1"
+              <AnimatedName
                 text="Akash Siddappa Goundi"
-                delay={0.15}
-                stagger={0.08}
                 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-black dark:text-white leading-[1.1]"
               />
               <p className="mt-3 text-base sm:text-lg font-bold text-black dark:text-white leading-relaxed">
