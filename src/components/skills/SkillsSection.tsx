@@ -68,7 +68,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onSelectProject })
                         key={pId}
                         href={`#project-${pId}`}
                         onClick={() => onSelectProject?.(pId)}
-                        className="inline-flex items-center gap-1 px-3 py-1 rounded-none bg-signal text-white text-xs font-mono font-bold uppercase hover:bg-signal-deep border border-black dark:border-white transition-colors"
+                        className="inline-flex items-center gap-1 px-3 py-1 rounded-none bg-signal text-white text-xs font-mono font-bold uppercase hover:bg-cyan hover:text-black border border-black dark:border-white transition-colors"
                       >
                         <span>{p ? p.title.split('—')[0].trim() : pId}</span>
                         <ArrowRight className="w-3 h-3 stroke-[2.5]" />
@@ -114,7 +114,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onSelectProject })
                         className={`px-2.5 py-1 rounded-none text-xs font-mono font-bold uppercase transition-colors text-left border flex items-center gap-1.5 cursor-pointer ${
                           isSelected
                             ? 'bg-signal text-white border-signal shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
-                            : 'bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 border-black dark:border-white'
+                            : 'bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white hover:bg-cyan hover:text-black hover:border-cyan border-black dark:border-white'
                         }`}
                         title={skill.verifiedUse}
                       >

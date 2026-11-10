@@ -32,7 +32,7 @@ export const CopyEmailButton: React.FC<CopyEmailButtonProps> = ({
         className={`inline-flex items-center gap-2 px-5 py-3 rounded-none font-mono text-xs font-bold uppercase tracking-wider transition-colors duration-150 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] ${
           copied
             ? 'bg-emerald-600 text-white border-black dark:border-white'
-            : 'bg-white dark:bg-black hover:bg-neutral-100 dark:hover:bg-neutral-900 text-black dark:text-white border-black dark:border-white'
+            : 'bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan text-black dark:text-white border-black dark:border-white'
         } ${className}`}
         title="Copy email to clipboard"
       >
@@ -55,7 +55,7 @@ export const CopyEmailButton: React.FC<CopyEmailButtonProps> = ({
     <button
       onClick={handleCopy}
       type="button"
-      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-none font-mono text-xs uppercase font-bold text-black dark:text-white bg-white dark:bg-black hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-black dark:border-white transition-colors ${className}`}
+      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-none font-mono text-xs uppercase font-bold text-black dark:text-white bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan border border-black dark:border-white transition-colors ${className}`}
       title="Copy email to clipboard"
     >
       {copied ? (

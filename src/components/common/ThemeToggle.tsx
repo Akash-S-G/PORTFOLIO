@@ -21,7 +21,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       aria-pressed={isDark}
       title={`Switch to ${isDark ? 'LIGHT' : 'DARK'} mode`}
-      className={`relative p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white text-black dark:text-white hover:bg-signal hover:border-signal hover:text-white dark:hover:bg-signal dark:hover:border-signal dark:hover:text-white active:scale-90 transition-all duration-200 overflow-hidden ${className}`}
+      className={`relative p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white text-black dark:text-white hover:bg-cyan hover:text-black hover:border-cyan active:scale-90 transition-all duration-200 overflow-hidden ${className}`}
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span

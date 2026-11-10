@@ -21,7 +21,7 @@ export const ProjectDetailTabs: React.FC<ProjectDetailTabsProps> = ({ project })
       className={`px-4 py-2 font-mono text-xs font-bold uppercase transition-colors rounded-none border-2 ${
         activeTab === tab
           ? 'bg-signal text-white border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
-          : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white'
+          : 'bg-white dark:bg-black text-black dark:text-white border-neutral-300 dark:border-neutral-700 hover:bg-cyan hover:text-black hover:border-cyan'
       }`}
     >
       {label}

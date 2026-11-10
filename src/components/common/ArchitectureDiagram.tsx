@@ -66,7 +66,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
               className={`text-left p-3.5 rounded-none border-2 transition-colors duration-150 relative flex flex-col justify-between min-h-[96px] cursor-pointer ${
                 isSelected
                   ? 'bg-signal text-white border-black dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]'
-                  : 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900'
+                  : 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan'
               }`}
             >
               <div className="flex items-center justify-between w-full mb-2">

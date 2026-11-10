@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
                   className={`px-3 py-1.5 rounded-none text-xs font-mono font-bold uppercase tracking-wider transition-colors duration-150 ${
                     isActive
                       ? 'bg-signal text-white border border-black dark:border-white'
-                      : 'text-black dark:text-white hover:text-cyan-dark dark:hover:text-cyan hover:bg-neutral-200 dark:hover:bg-neutral-800'
+                      : 'text-black dark:text-white hover:text-cyan-dark dark:hover:text-cyan hover:bg-cyan-subtle'
                   }`}
                 >
                   {link.name}
@@ -91,7 +91,7 @@ export const Navbar: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white transition-colors"
+              className="p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan text-black dark:text-white transition-colors"
             >
               <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
             </a>
@@ -101,7 +101,7 @@ export const Navbar: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white transition-colors"
+              className="p-2 rounded-none bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-cyan hover:text-black hover:border-cyan text-black dark:text-white transition-colors"
             >
               <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
             </a>
@@ -109,7 +109,7 @@ export const Navbar: React.FC = () => {
             <a
               href={`./${PERSONAL_INFO.resumeFilename}`}
               download={PERSONAL_INFO.resumeFilename}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-black dark:bg-white hover:bg-signal-deep text-white dark:text-black font-mono text-xs font-bold uppercase tracking-wider border-2 border-black dark:border-white transition-colors"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-black dark:bg-white hover:bg-cyan hover:text-black hover:border-cyan text-white dark:text-black font-mono text-xs font-bold uppercase tracking-wider border-2 border-black dark:border-white transition-colors"
             >
               <Download className="w-3.5 h-3.5 stroke-[2.5]" />
               <span>Resume</span>
@@ -140,7 +140,7 @@ export const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-none font-mono text-xs font-bold uppercase tracking-wider text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border border-black dark:border-white transition-colors"
+                className="px-3 py-2 rounded-none font-mono text-xs font-bold uppercase tracking-wider text-black dark:text-white hover:bg-cyan hover:text-black hover:border-cyan border border-black dark:border-white transition-colors"
               >
                 {link.name}
               </a>

@@ -78,7 +78,7 @@ export const Hero: React.FC = () => {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
                 href="#overview"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-black hover:bg-signal dark:bg-white dark:hover:bg-signal dark:hover:text-white text-white dark:text-black hover:border-signal dark:hover:border-signal border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-black dark:bg-white text-white dark:text-black hover:bg-cyan hover:text-black hover:border-cyan border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>EXPLORE MY WORK</span>
@@ -88,7 +88,7 @@ export const Hero: React.FC = () => {
               <a
                 href={`./${PERSONAL_INFO.resumeFilename}`}
                 download={PERSONAL_INFO.resumeFilename}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-none bg-white hover:bg-neutral-100 dark:bg-black dark:hover:bg-neutral-900 text-black dark:text-white border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-none bg-white dark:bg-black hover:bg-cyan hover:text-black hover:border-cyan text-black dark:text-white border-2 border-black dark:border-white font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Download className="w-4 h-4 stroke-[2.5]" />
                 <span>RESUME (PDF)</span>

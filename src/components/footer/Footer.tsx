@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
                 Akash Siddappa Goundi
               </div>
               <div className="text-[11px] font-mono text-neutral-600 dark:text-neutral-400 font-semibold uppercase">
-                Software Engineering • Backend Systems • AI Integration
+                Backend Systems • Distributed Services • LLM Integration
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-black dark:text-white hover:underline transition-colors"
+              className="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-dark dark:hover:text-cyan transition-colors"
             >
               <Github className="w-4 h-4 text-cyan-dark dark:text-cyan" />
               <span>GitHub</span>
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
               href={PERSONAL_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-black dark:text-white hover:underline transition-colors"
+              className="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-dark dark:hover:text-cyan transition-colors"
             >
               <Linkedin className="w-4 h-4 text-cyan-dark dark:text-cyan" />
               <span>LinkedIn</span>
@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
 
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="flex items-center gap-1.5 text-black dark:text-white hover:underline transition-colors"
+              className="flex items-center gap-1.5 text-black dark:text-white hover:text-cyan-dark dark:hover:text-cyan transition-colors"
             >
               <Mail className="w-4 h-4" />
               <span>Email</span>
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
           <button
             onClick={scrollToTop}
             type="button"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-signal hover:bg-signal-deep text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-signal hover:bg-cyan hover:text-black hover:border-cyan text-white border-2 border-black dark:border-white text-xs font-mono font-bold uppercase transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
             aria-label="Scroll to top of page"
           >
             <span>Back to top</span>
