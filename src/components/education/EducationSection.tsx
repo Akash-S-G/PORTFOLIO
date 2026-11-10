@@ -6,7 +6,7 @@ import { TextReveal } from '../common/Reveal';
 
 export const EducationSection: React.FC = () => {
   return (
-    <section className="py-20 bg-neutral-50 dark:bg-black relative transition-colors duration-150">
+    <section className="py-20 relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left: Education */}

@@ -49,7 +49,10 @@ const PortfolioContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col font-sans selection:bg-signal selection:text-white dark:selection:bg-signal dark:selection:text-white transition-colors duration-150 overflow-x-clip">
+    <div className="min-h-screen text-black dark:text-white flex flex-col font-sans selection:bg-signal selection:text-white dark:selection:bg-signal dark:selection:text-white transition-colors duration-150 overflow-x-clip">
+      {/* Atmospheric corner gradients (peach top-right, cyan bottom-left) */}
+      <div className="atmosphere-glow" aria-hidden="true" />
+
       {/* Navigation Header */}
       <Navbar />
 

@@ -7,7 +7,7 @@ import { TextReveal } from '../common/Reveal';
 
 export const ProfileOverviewSection: React.FC = () => {
   return (
-    <section className="py-20 lg:py-28 relative bg-white dark:bg-black transition-colors duration-150">
+    <section className="py-20 lg:py-28 relative transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

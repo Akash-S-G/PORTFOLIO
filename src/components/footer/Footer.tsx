@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="py-12 bg-white dark:bg-black text-black dark:text-white transition-colors duration-150">
+    <footer className="py-12 text-black dark:text-white transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b-2 border-black dark:border-white">
           {/* Left Brand */}

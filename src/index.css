@@ -15,6 +15,11 @@
     scroll-behavior: smooth;
     border-radius: 0 !important;
     font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    background-color: #FAF7F1;
+  }
+
+  html.dark {
+    background-color: #181715;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -118,20 +123,85 @@
   animation: blink-pulse 1.2s ease-in-out infinite;
 }
 
-/* Continuous gradient flow (primary <-> secondary), loops seamlessly */
+/* Continuous gradient flow (primary <-> secondary), loops seamlessly.
+   The badge no longer flashes — only the glow flows. */
 @keyframes gradient-flow {
   0% { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
 }
 
-.animate-gradient-blink {
+.animate-gradient-glow {
   background-size: 200% 100%;
-  animation: gradient-flow 3s linear infinite, blink-pulse 1.2s ease-in-out infinite;
+  animation: gradient-flow 3s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-blink,
-  .animate-gradient-blink {
+  .animate-gradient-glow {
     animation: none;
+  }
+}
+
+/* Atmospheric corner gradients: warm peach light from the top-right, faint
+   cyan from the bottom-left, ivory center. Fixed, decorative-only layer. */
+.atmosphere-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      ellipse 650px 500px at 100% 0%,
+      rgba(243, 181, 143, 0.22),
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 550px 450px at 0% 100%,
+      rgba(34, 211, 238, 0.07),
+      transparent 75%
+    );
+}
+
+html.dark .atmosphere-glow {
+  background-image:
+    radial-gradient(
+      ellipse 650px 500px at 100% 0%,
+      rgba(255, 77, 0, 0.06),
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 550px 450px at 0% 100%,
+      rgba(34, 211, 238, 0.04),
+      transparent 75%
+    );
+}
+
+@media (max-width: 767px) {
+  .atmosphere-glow {
+    background-image:
+      radial-gradient(
+        ellipse 420px 320px at 100% 0%,
+        rgba(243, 181, 143, 0.16),
+        transparent 75%
+      ),
+      radial-gradient(
+        ellipse 360px 300px at 0% 100%,
+        rgba(34, 211, 238, 0.05),
+        transparent 75%
+      );
+  }
+
+  html.dark .atmosphere-glow {
+    background-image:
+      radial-gradient(
+        ellipse 420px 320px at 100% 0%,
+        rgba(255, 77, 0, 0.05),
+        transparent 75%
+      ),
+      radial-gradient(
+        ellipse 360px 300px at 0% 100%,
+        rgba(34, 211, 238, 0.035),
+        transparent 75%
+      );
   }
 }
